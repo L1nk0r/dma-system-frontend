@@ -70,7 +70,7 @@
 
          <div class="tests_container">
             <ds-test-cart
-               v-for="item in this.$store.getters.TESTS"
+               v-for="item in TESTS"
                :key="item"
                :cart_data="item"
             />
@@ -82,7 +82,7 @@
 <script>
 import dsTestCart from "./ds_test_cart.vue"
 import dsNewCategory from "./ds_new_category.vue"
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
    name: "Profile_tests",
@@ -138,6 +138,11 @@ export default {
    created(){ },
    mounted(){
       this.GET_TESTS_FROM_API();
+   },
+   computed:{
+      ...mapGetters([
+         'TESTS'
+      ])
    },
    methods:{
       ...mapActions([
