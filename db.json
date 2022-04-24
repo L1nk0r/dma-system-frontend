@@ -1,0 +1,185 @@
+{
+   "users":[
+      {
+         "login": "test",
+         "pasword": "1234567"
+      }
+   ],
+   "tests":[
+      {
+         "name": "Global info",
+         "description": "This test is about you and your global goals.",
+         "questins":[{
+               "question": "What is your main dream?",
+               "answers":[
+                  "buy new car",
+                  "buy new house",
+                  "move to another country",
+                  "find new girlfriend"
+               ]
+            },
+            {
+               "question": "How old are you?",
+               "answers":[
+                  "0-18",
+                  "18-25",
+                  "25-40",
+                  "more than 40"
+               ]
+            },
+            {
+               "question": "How are you?",
+               "answers":[
+                  "Good!",
+                  "Exelent!",
+                  "Dissapointed",
+                  "Depressed"
+               ]
+            }
+         ],
+         "people_amount": 100,
+         "already_finished": 29,
+         "status": "IN_PROCESS"
+      },
+      {
+         "name": "Point of view",
+         "description": "Tell us your opinion about situation in the world.",
+         "questins":[{
+               "question": "What is your main dream?",
+               "answers":[
+                  "buy new car",
+                  "buy new house",
+                  "move to another country",
+                  "find new girlfriend"
+               ]
+            },
+            {
+               "question": "How old are you?",
+               "answers":[
+                  "0-18",
+                  "18-25",
+                  "25-40",
+                  "more than 40"
+               ]
+            },
+            {
+               "question": "How are you?",
+               "answers":[
+                  "Good!",
+                  "Exelent!",
+                  "Dissapointed",
+                  "Depressed"
+               ]
+            }
+         ],
+         "people_amount": 90,
+         "already_finished": 10,
+         "status": "FINISHED"
+      },
+      {
+         "name": "Job",
+         "description": "Do you feel good on your job?",
+         "questins":[{
+               "question": "What is your main dream?",
+               "answers":[
+                  "buy new car",
+                  "buy new house",
+                  "move to another country",
+                  "find new girlfriend"
+               ]
+            },
+            {
+               "question": "How old are you?",
+               "answers":[
+                  "0-18",
+                  "18-25",
+                  "25-40",
+                  "more than 40"
+               ]
+            },
+            {
+               "question": "How are you?",
+               "answers":[
+                  "Good!",
+                  "Exelent!",
+                  "Dissapointed",
+                  "Depressed"
+               ]
+            }
+         ],
+         "people_amount": 78,
+         "already_finished": 56,
+         "status": "FINISHED"
+      },
+      {
+         "name": "Relations",
+         "description": "Have you got any problems with your closest relatives?",
+         "questins":[{
+            "question": "What is your main dream?",
+            "answers":[
+               "buy new car",
+               "buy new house",
+               "move to another country",
+               "find new girlfriend"
+            ]
+            },
+            {
+               "question": "How old are you?",
+               "answers":[
+                  "0-18",
+                  "18-25",
+                  "25-40",
+                  "more than 40"
+               ]
+            },
+            {
+               "question": "How are you?",
+               "answers":[
+                  "Good!",
+                  "Exelent!",
+                  "Dissapointed",
+                  "Depressed"
+               ]
+            }
+         ],
+         "people_amount": 50,
+         "already_finished": 37,
+         "status": "APPROVED"
+      },
+      {
+         "name": "Hobbys",
+         "description": "Tell us about your hobby!",
+         "questins":[{
+               "question": "What is your main dream?",
+               "answers":[
+                  "buy new car",
+                  "buy new house",
+                  "move to another country",
+                  "find new girlfriend"
+               ]
+            },
+            {
+               "question": "How old are you?",
+               "answers":[
+                  "0-18",
+                  "18-25",
+                  "25-40",
+                  "more than 40"
+               ]
+            },
+            {
+               "question": "How are you?",
+               "answers":[
+                  "Good!",
+                  "Exelent!",
+                  "Dissapointed",
+                  "Depressed"
+               ]
+            }
+         ],
+         "people_amount": 10,
+         "already_finished": 2,
+         "status": "PUBLISHED"
+      }
+   ]
+}
