@@ -70,7 +70,7 @@
 
          <div class="tests_container">
             <ds-test-cart
-               v-for="item in TESTS"
+               v-for="item in this.$store.getters.TESTS"
                :key="item"
                :cart_data="item"
             />
@@ -82,6 +82,7 @@
 <script>
 import dsTestCart from "./ds_test_cart.vue"
 import dsNewCategory from "./ds_new_category.vue"
+import {mapActions} from 'vuex'
 
 export default {
    name: "Profile_tests",
@@ -91,7 +92,6 @@ export default {
    },
    data(){
       return {
-         TESTS: [],
          filters:[
             {
                label:'Choose filter...',
@@ -135,15 +135,14 @@ export default {
          previous_category: null,
       }
    },
-   created(){
-      this.loadTests();
+   created(){ },
+   mounted(){
+      this.GET_TESTS_FROM_API();
    },
    methods:{
-      async loadTests(){
-         this.TESTS = await fetch(
-            `${this.$store.getters.getServerUrl}/tests`
-         ).then(response => response.json());
-      },
+      ...mapActions([
+         'GET_TESTS_FROM_API'
+      ]),
       add_category(){
          if (this.current_category === null){
             this.elements.push(this.category_element);
@@ -159,7 +158,7 @@ export default {
          this.previous_category = null;
          this.deep --;
       },
-      
+
    }
 }
 </script>
@@ -198,16 +197,26 @@ export default {
       border-bottom: 2px solid rgba(120, 120, 249, 0.4);
       font-size: 20px;
 
+      width: 30%;
+
       transition: 0.4s;
+
+      color: rgba(120, 120, 249, 0.4);
    }
 
-   #description{
-      width: 450px;
+   .input_field:not(:placeholder-shown){
+      border: none;
+      color: black;
    }
 
    .input_field:focus{
       outline: none;
       border-bottom: 2px solid rgba(120, 120, 249, 0.7);
+      width: 50%;
+
+      color: rgba(120, 120, 249, 0.9);
+
+      padding: 5px;
    }
 
    .add_button{

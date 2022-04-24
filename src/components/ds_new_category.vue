@@ -1,7 +1,7 @@
 <template>
    <div class="new_categoty_container">
 
-      <input v-model="this.category.name" placeholder="type here..."/>
+      <input v-model="this.category.name" placeholder="type here..." class="input_field"/>
 
    </div>
 </template>
@@ -38,17 +38,30 @@ export default {
       border-radius: 15px;
    }
 
-   input{
-      background: none;
+   .input_field{
       border: none;
-      font-size: 15px;
-      
+      border-bottom: 2px solid rgba(120, 120, 249, 0.4);
+      font-size: 12px;
+
+      width: 30%;
+
       transition: 0.4s;
+
+      color: rgba(120, 120, 249, 0.4);
    }
 
-   input:focus{
-      border-bottom: 1px solid blue;
-      width: 100%;
+   .input_field:not(:placeholder-shown){
+      border: none;
+      color: black;
+   }
+
+   .input_field:focus{
       outline: none;
+      border-bottom: 2px solid rgba(120, 120, 249, 0.7);
+      width: 50%;
+
+      color: rgba(120, 120, 249, 0.9);
+
+      padding: 5px;
    }
 </style>

@@ -57,7 +57,7 @@ const store = createStore({
             method: 'GET'
          })
             .then((response) => {
-               commit('SET_TESTS_TO_STATE', response)
+               commit('SET_TESTS_TO_STATE', response.data)
             })
       }
    },
