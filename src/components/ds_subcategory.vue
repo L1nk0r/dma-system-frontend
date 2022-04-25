@@ -1,30 +1,22 @@
 <template>
-   <div class="new_categoty_container">
+   <div class="new_subcategoty_container">
 
       <input v-model="this.name" placeholder="type here..." class="input_field"/>
 
-      <ds-sub-category 
-         v-for="sub_cat in this.category.elements"
-         :key="sub_cat.id"
-         :subCategory="sub_cat"
-      />
+      
    </div>
 </template>
 
 <script>
-import dsSubCategory from "./ds_subcategory.vue"
 export default {
-   name: 'NewCategory',
-   components: {
-      dsSubCategory,
-   },
+   name: 'SubCategory',
    data(){
       return {
          name: '',
       }
    },
    props:{
-      category:{
+      subCategory:{
             type: Object,
             default() {
                return {}
@@ -41,11 +33,11 @@ export default {
 </script>
 
 <style>
-   .new_categoty_container{
+   .new_subcategoty_container{
       width: 70%;
       padding: 20px;
       margin: 15px;
-      border: 1px solid blue;
+      border: 1px solid yellow;
       border-radius: 15px;
    }
 

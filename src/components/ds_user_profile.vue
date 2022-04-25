@@ -45,9 +45,9 @@
 
                   <div class="questions_container">
                      <ds-new-category 
-                        v-for="category in elements"
-                        :key="category.id"
-                        :category="category"
+                        v-for="elem in NEW_TEST.elements"
+                        :key="elem.name"
+                        :category="elem"
                      />
                   </div>
                </div>
@@ -83,6 +83,9 @@
 import dsTestCart from "./ds_test_cart.vue"
 import dsNewCategory from "./ds_new_category.vue"
 import {mapActions, mapGetters} from 'vuex'
+
+import Category from '../elements/category'
+import SubCategory from '../elements/subcategory'
 
 export default {
    name: "Profile_tests",
@@ -121,47 +124,64 @@ export default {
          ],
          filter: '',
          createTestVisible: false,
-         elements: [
-
-         ],
-         category_element:{
-            id: 1,
-            name: 'New category',
-            elements:[]
-         },
-         elements_amount: 0,
          deep: 0,
          current_category: null,
          previous_category: null,
+         amount: 0,
       }
    },
    created(){ },
    mounted(){
-      this.GET_TESTS_FROM_API();
+      this.GET_TESTS_FROM_API()
+      .then((response) => {
+         if (response.data) {
+            console.log('Tests arrived!')
+         }
+      })
    },
    computed:{
       ...mapGetters([
-         'TESTS'
+         'TESTS',
+         'NEW_TEST',
+         'NEW_TEST_ELEMENTS'
       ])
    },
    methods:{
       ...mapActions([
-         'GET_TESTS_FROM_API'
+         'GET_TESTS_FROM_API',
+         'ADD_NEW_ELEMENT_TO_NEW_TEST'
       ]),
       add_category(){
+         
          if (this.current_category === null){
-            this.elements.push(this.category_element);
-            this.current_category = this.category_element;
+            let new_cat = new Category(this.amount);
+            this.amount ++;
+
+            this.ADD_NEW_ELEMENT_TO_NEW_TEST(new_cat);
+
+            this.current_category = new_cat;
             this.previous_category = null;
             this.deep++;
          } else {
-            console.log(this.current_category);
+            if (this.deep === 2){
+               console.log('Cant add new sub category');
+            } else {
+               let new_sub_cat = new SubCategory(this.amount);
+               this.amount ++;
+
+               this.current_category.add_sub_category(new_sub_cat);
+
+               this.previous_category = this.current_category;
+               this.current_category = this.category_element;
+
+               this.deep = 2;
+            }
          }
       },
       leave_category(){
          this.current_category = this.previous_category;
          this.previous_category = null;
-         this.deep --;
+         this.deep--;
       },
 
    }
