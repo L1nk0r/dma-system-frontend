@@ -55,6 +55,7 @@ const store = createStore({
       },
       SET_TEST_NAME: (state, name) => {
          state.new_test.name = name;
+         console.log(state.new_test.name);
       },
       SET_TEST_DESCRIPTION: (state, description) => {
          state.new_test.description = description;
@@ -91,7 +92,7 @@ const store = createStore({
          commit('ADD_NEW_ELEMENT', element)
       },
       SET_NEW_TEST_NAME({commit}, name){
-         commit('SET_TEST_NAME', name)
+         commit('SET_TEST_NAME', name);
       },
       SET_NEW_TEST_DESCRIPTION({commit}, description){
          commit('SET_TEST_NAME', description)

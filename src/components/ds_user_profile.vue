@@ -19,17 +19,32 @@
                <div class="contaner">
                   <div class="raw">
                      <h3>Название теста</h3>
-                      <input type="text" class="input_field" placeholder="Type here..."/>
+                      <input 
+                        type="text"
+                        class="input_field" 
+                        placeholder="Type here..."
+                        v-model="this.test_name"
+                        @change="changeNewTestName()"
+                     />
                   </div>
 
                   <div class="raw">
                      <h3>Описание</h3>
-                      <input type="text" class="input_field" id="description" placeholder="Type here..."/>
+                      <input 
+                        type="text" 
+                        class="input_field" 
+                        id="description" 
+                        placeholder="Type here..."
+                     />
                   </div>
 
                   <div class="raw">
                      <h3>Ответственный</h3>
-                      <input type="text" class="input_field" placeholder="Type here..."/>
+                      <input 
+                        type="text" 
+                        class="input_field" 
+                        placeholder="Type here..."
+                     />
                   </div>
 
                   <div class="raw">
@@ -128,6 +143,7 @@ export default {
          current_category: null,
          previous_category: null,
          amount: 0,
+         test_name: '',
       }
    },
    created(){ },
@@ -149,7 +165,8 @@ export default {
    methods:{
       ...mapActions([
          'GET_TESTS_FROM_API',
-         'ADD_NEW_ELEMENT_TO_NEW_TEST'
+         'ADD_NEW_ELEMENT_TO_NEW_TEST',
+         'SET_NEW_TEST_NAME'
       ]),
       add_category(){
          
@@ -183,7 +200,9 @@ export default {
          this.previous_category = null;
          this.deep--;
       },
-
+      changeNewTestName(){
+         this.SET_NEW_TEST_NAME(this.test_name);
+      }
    }
 }
 </script>
@@ -232,6 +251,7 @@ export default {
    .input_field:not(:placeholder-shown){
       border: none;
       color: black;
+      width: 70%;
    }
 
    .input_field:focus{
