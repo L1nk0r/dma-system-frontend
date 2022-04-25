@@ -95,10 +95,10 @@ const store = createStore({
          commit('SET_TEST_NAME', name);
       },
       SET_NEW_TEST_DESCRIPTION({commit}, description){
-         commit('SET_TEST_NAME', description)
+         commit('SET_TEST_DESCRIPTION', description)
       },
       SET_NEW_TEST_RESPONSIBLE_USER({commit}, user_name){
-         commit('SET_TEST_NAME', user_name)
+         commit('SET_TEST_RESPONSIBLE_USER', user_name)
       }
    },
    getters: {

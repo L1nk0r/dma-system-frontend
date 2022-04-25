@@ -59,7 +59,13 @@
                         @click="leave_category()"
                         v-if="this.deep > 0">
                      Выйти</button>
-                     <button class="right add_button" @click="add_question()">Добавить вопрос</button>
+                     <button 
+                        class="right add_button" 
+                        @click="add_question()"
+                        v-if="this.deep > 0"
+                     >
+                        Добавить вопрос
+                     </button>
                   </div>
 
                   <div class="questions_container">
@@ -67,6 +73,7 @@
                         v-for="elem in NEW_TEST.elements"
                         :key="elem.name"
                         :category="elem"
+                        
                      />
                   </div>
                </div>
@@ -173,8 +180,8 @@ export default {
          'GET_TESTS_FROM_API',
          'ADD_NEW_ELEMENT_TO_NEW_TEST',
          'SET_NEW_TEST_NAME',
-         'SET_TEST_DESCRIPTION',
-         'SET_TEST_RESPONSIBLE_USER'
+         'SET_NEW_TEST_DESCRIPTION',
+         'SET_NEW_TEST_RESPONSIBLE_USER'
       ]),
       add_category(){
          
@@ -212,10 +219,10 @@ export default {
          this.SET_NEW_TEST_NAME(this.test_name);
       },
       changeNewTestDescription(){
-         this.SET_TEST_DESCRIPTION(this.test_description);
+         this.SET_NEW_TEST_DESCRIPTION(this.test_description);
       },
       changeNewTestResponsibleUser(){
-         this.SET_TEST_RESPONSIBLE_USER(this.test_responsible_user)
+         this.SET_NEW_TEST_RESPONSIBLE_USER(this.test_responsible_user)
       }
    }
 }
