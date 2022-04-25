@@ -35,6 +35,8 @@
                         class="input_field" 
                         id="description" 
                         placeholder="Type here..."
+                        v-model="this.test_description"
+                        @change="changeNewTestDescription()"
                      />
                   </div>
 
@@ -44,6 +46,8 @@
                         type="text" 
                         class="input_field" 
                         placeholder="Type here..."
+                        v-model="this.test_responsible_user"
+                        @change="changeNewTestResponsibleUser()"
                      />
                   </div>
 
@@ -144,6 +148,8 @@ export default {
          previous_category: null,
          amount: 0,
          test_name: '',
+         test_description: '',
+         test_responsible_user: ''
       }
    },
    created(){ },
@@ -166,7 +172,9 @@ export default {
       ...mapActions([
          'GET_TESTS_FROM_API',
          'ADD_NEW_ELEMENT_TO_NEW_TEST',
-         'SET_NEW_TEST_NAME'
+         'SET_NEW_TEST_NAME',
+         'SET_TEST_DESCRIPTION',
+         'SET_TEST_RESPONSIBLE_USER'
       ]),
       add_category(){
          
@@ -202,6 +210,12 @@ export default {
       },
       changeNewTestName(){
          this.SET_NEW_TEST_NAME(this.test_name);
+      },
+      changeNewTestDescription(){
+         this.SET_TEST_DESCRIPTION(this.test_description);
+      },
+      changeNewTestResponsibleUser(){
+         this.SET_TEST_RESPONSIBLE_USER(this.test_responsible_user)
       }
    }
 }
