@@ -28,7 +28,9 @@ export default {
          this.$emit('sendName', category);
       } */
    },
-   computed:{ }
+   mounted(){
+      console.log(this.subCategory);
+   }
 }
 </script>
 

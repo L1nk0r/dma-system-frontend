@@ -68,12 +68,12 @@
                      </button>
                   </div>
 
-                  <div class="questions_container">
+                  <div class="questions_container"
+                     v-if="this.amount > 0">
                      <ds-new-category 
                         v-for="elem in NEW_TEST.elements"
-                        :key="elem.name"
+                        :key="elem.id"
                         :category="elem"
-                        
                      />
                   </div>
                </div>
@@ -112,6 +112,7 @@ import {mapActions, mapGetters} from 'vuex'
 
 import Category from '../elements/category'
 import SubCategory from '../elements/subcategory'
+import Question from '../elements/question'
 
 export default {
    name: "Profile_tests",
@@ -166,7 +167,8 @@ export default {
          if (response.data) {
             console.log('Tests arrived!')
          }
-      })
+      });
+      console.log(this.NEW_TEST.elements);
    },
    computed:{
       ...mapGetters([
@@ -204,7 +206,7 @@ export default {
                this.current_category.add_sub_category(new_sub_cat);
 
                this.previous_category = this.current_category;
-               this.current_category = this.category_element;
+               this.current_category = new_sub_cat;
 
                this.deep = 2;
             }
@@ -214,6 +216,10 @@ export default {
          this.current_category = this.previous_category;
          this.previous_category = null;
          this.deep--;
+      },
+      add_question(){
+         let new_question = new Question();
+         this.current_category.add_question(new_question);
       },
       changeNewTestName(){
          this.SET_NEW_TEST_NAME(this.test_name);

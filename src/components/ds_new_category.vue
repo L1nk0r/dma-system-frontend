@@ -1,10 +1,16 @@
 <template>
    <div class="new_categoty_container">
 
-      <input v-model="this.name" placeholder="type here..." class="input_field"/>
+      <input 
+         type="text"
+         v-model="this.name" 
+         placeholder="type here..." 
+         class="input_field"
+         @change="changeCategoryName()"
+         />
 
       <ds-sub-category 
-         v-for="sub_cat in this.category.elements"
+         v-for="sub_cat in category.elements"
          :key="sub_cat.id"
          :subCategory="sub_cat"
       />
@@ -25,18 +31,17 @@ export default {
    },
    props:{
       category:{
-            type: Object,
-            default() {
-               return {}
-            }
-         }
+         type: Object,
+         default: () => {}
+      }
    },
    methods:{
-      /* add_sub_category(){
-         this.$emit('sendName', category);
-      } */
+      changeCategoryName(){
+         this.category.set_name(this.name);
+      }
    },
-   computed:{ }
+   computed:{ },
+   mounted(){ }
 }
 </script>
 
