@@ -1,15 +1,29 @@
 <template>
    <div class="new_subcategoty_container">
 
-      <input v-model="this.name" placeholder="type here..." class="input_field"/>
+      <input 
+         v-model="this.name" 
+         placeholder="type here..." 
+         class="input_field"
+         @change="changeCategoryName()"
+      />
 
-      
+      <ds-question 
+         v-for="ques in subCategory.elements"
+         :key="ques.id"
+         :question=ques
+      />
    </div>
 </template>
 
 <script>
+import dsQuestion from "./ds_question.vue"
+
 export default {
    name: 'SubCategory',
+   components:{
+      dsQuestion
+   },
    data(){
       return {
          name: '',
@@ -18,19 +32,15 @@ export default {
    props:{
       subCategory:{
             type: Object,
-            default() {
-               return {}
-            }
+            default:() => { }
          }
    },
    methods:{
-      /* add_sub_category(){
-         this.$emit('sendName', category);
-      } */
+      changeCategoryName(){
+         this.subCategory.set_name(this.name);
+      }
    },
-   mounted(){
-      console.log(this.subCategory);
-   }
+   mounted(){ }
 }
 </script>
 

@@ -2,14 +2,14 @@
 export default class Question{
    constructor(){
       this.question = 'new_question';
-      this.weight = 0;
+      this.answers = [];
    }
 
    set_question(question){
       this.question = question;
    }
 
-   set_weight(weight){
-      this.weight = weight;
+   add_answer(answer){
+      this.answers.push(answer);
    }
 }

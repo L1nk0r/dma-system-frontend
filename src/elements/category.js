@@ -6,6 +6,8 @@ export default class Category{
       this.elements = [];
 
       console.log(this.name);
+
+      this.elements_type = '';
    }
 
    add_sub_category(sub_category){
@@ -18,5 +20,9 @@ export default class Category{
 
    set_name(name){
       this.name = name;
+   }
+
+   set_elements_type(elements_type){
+      this.elements_type = elements_type;
    }
 }

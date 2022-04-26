@@ -74,6 +74,7 @@
                         v-for="elem in NEW_TEST.elements"
                         :key="elem.id"
                         :category="elem"
+                        :current_type="this.current_type"
                      />
                   </div>
                </div>
@@ -157,7 +158,8 @@ export default {
          amount: 0,
          test_name: '',
          test_description: '',
-         test_responsible_user: ''
+         test_responsible_user: '',
+         false_type_msg: 'Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.'
       }
    },
    created(){ },
@@ -186,7 +188,6 @@ export default {
          'SET_NEW_TEST_RESPONSIBLE_USER'
       ]),
       add_category(){
-         
          if (this.current_category === null){
             let new_cat = new Category(this.amount);
             this.amount ++;
@@ -197,9 +198,10 @@ export default {
             this.previous_category = null;
             this.deep++;
          } else {
-            if (this.deep === 2){
+            if ((this.deep === 2) || (this.current_category.elements_type === 'que')){
                console.log('Cant add new sub category');
             } else {
+               this.current_category.set_elements_type('cat');
                let new_sub_cat = new SubCategory(this.amount);
                this.amount ++;
 
@@ -218,8 +220,15 @@ export default {
          this.deep--;
       },
       add_question(){
-         let new_question = new Question();
-         this.current_category.add_question(new_question);
+         if ((this.current_type === '') || (this.current_category.elements_type === 'que')){
+            this.current_category.set_elements_type('que');
+            let new_question = new Question();
+            this.current_category.add_question(new_question);
+            console.log('new question');
+         } else {
+            console.log(this.false_type_msg);
+         }
+         
       },
       changeNewTestName(){
          this.SET_NEW_TEST_NAME(this.test_name);
@@ -229,6 +238,13 @@ export default {
       },
       changeNewTestResponsibleUser(){
          this.SET_NEW_TEST_RESPONSIBLE_USER(this.test_responsible_user)
+      },
+      checkType(){
+         if (this.current_type === 'que'){
+            return 0;
+         } else {
+            return 1;
+         }
       }
    }
 }

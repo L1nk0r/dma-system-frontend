@@ -9,20 +9,36 @@
          @change="changeCategoryName()"
          />
 
-      <ds-sub-category 
-         v-for="sub_cat in category.elements"
-         :key="sub_cat.id"
-         :subCategory="sub_cat"
-      />
+      <div
+         class="categories_container"
+         v-if="category.elements_type === 'cat'">
+         <ds-sub-category 
+            v-for="sub_cat in category.elements"
+            :key="sub_cat.id"
+            :subCategory="sub_cat"
+         />
+      </div>
+
+      <div
+         class="categories_container"
+         v-if="category.elements_type === 'que'">
+         <ds-question
+            v-for="que in category.elements"
+            :key="que.id"
+            :question="que"
+         />
+      </div>
    </div>
 </template>
 
 <script>
 import dsSubCategory from "./ds_subcategory.vue"
+import dsQuestion from "./ds_question.vue"
 export default {
    name: 'NewCategory',
    components: {
       dsSubCategory,
+      dsQuestion
    },
    data(){
       return {

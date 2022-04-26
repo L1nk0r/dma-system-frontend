@@ -4,6 +4,8 @@ export default class SubCategory{
       this.name = 'New SubCategory' + n;
       this.id = n;
       this.elements = [];
+
+      this.elements_type = '';
    }
 
    add_question(question){
@@ -12,5 +14,9 @@ export default class SubCategory{
 
    set_name(name){
       this.name = name;
+   }
+
+   set_elements_type(elements_type){
+      this.elements_type = elements_type;
    }
 }
