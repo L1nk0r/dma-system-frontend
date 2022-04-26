@@ -51,30 +51,47 @@
                      />
                   </div>
 
-                  <div class="raw">
+                  <div class="raw buttons-container">
                      <h3>Вопросы</h3>
-                     <button class="left add_button" @click="add_category()">Добавить категрию</button>
+
+                     <button 
+                        class="add_button" 
+                        @click="add_category()">
+                     Добавить категрию
+                     </button>
+
                      <button
                         class="add_button"
                         @click="leave_category()"
                         v-if="this.deep > 0">
-                     Выйти</button>
+                     Выйти
+                     </button>
+
                      <button 
-                        class="right add_button" 
+                        class="add_button" 
                         @click="add_question()"
-                        v-if="this.deep > 0"
-                     >
+                        v-if="this.deep > 0">
                         Добавить вопрос
                      </button>
+
+                     <button 
+                        class="add_button" 
+                        @click="add_answer()"
+                        v-if="this.current_question != null">
+                        Добавить ответ
+                     </button>
+
                   </div>
 
                   <div class="questions_container"
                      v-if="this.amount > 0">
+                     <div v-if="this.current_category != null">
+                        <p>Current category:  {{ this.current_category.name }} </p>
+                     </div>
                      <ds-new-category 
                         v-for="elem in NEW_TEST.elements"
                         :key="elem.id"
                         :category="elem"
-                        :current_type="this.current_type"
                      />
                   </div>
                </div>
@@ -114,6 +131,7 @@ import {mapActions, mapGetters} from 'vuex'
 import Category from '../elements/category'
 import SubCategory from '../elements/subcategory'
 import Question from '../elements/question'
+import Answer from '../elements/answer'
 
 export default {
    name: "Profile_tests",
@@ -159,7 +177,8 @@ export default {
          test_name: '',
          test_description: '',
          test_responsible_user: '',
-         false_type_msg: 'Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.'
+         false_type_msg: 'Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.',
+         current_question: null,
       }
    },
    created(){ },
@@ -170,7 +189,6 @@ export default {
             console.log('Tests arrived!')
          }
       });
-      console.log(this.NEW_TEST.elements);
    },
    computed:{
       ...mapGetters([
@@ -217,18 +235,23 @@ export default {
       leave_category(){
          this.current_category = this.previous_category;
          this.previous_category = null;
+         this.current_question = null;
          this.deep--;
       },
       add_question(){
-         if ((this.current_type === '') || (this.current_category.elements_type === 'que')){
+         if ((this.current_category.elements_type === '') || (this.current_category.elements_type === 'que')){
             this.current_category.set_elements_type('que');
             let new_question = new Question();
             this.current_category.add_question(new_question);
-            console.log('new question');
+            this.current_question = new_question;
          } else {
             console.log(this.false_type_msg);
          }
          
+      },
+      add_answer(){
+         let new_ans = new Answer();
+         this.current_question.add_new_answer(new_ans);
       },
       changeNewTestName(){
          this.SET_NEW_TEST_NAME(this.test_name);
@@ -240,7 +263,7 @@ export default {
          this.SET_NEW_TEST_RESPONSIBLE_USER(this.test_responsible_user)
       },
       checkType(){
-         if (this.current_type === 'que'){
+         if (this.current_category.elements_type === 'que'){
             return 0;
          } else {
             return 1;
@@ -268,6 +291,10 @@ export default {
       align-items: flex-start;
    }
 
+   .el-dialog{
+      width: 70% !important;
+   }
+
    .raw{
       width: 100%;
       display: flex;
@@ -284,7 +311,7 @@ export default {
       border-bottom: 2px solid rgba(120, 120, 249, 0.4);
       font-size: 20px;
 
-      width: 30%;
+      width: 20%;
 
       transition: 0.4s;
 
@@ -300,18 +327,24 @@ export default {
    .input_field:focus{
       outline: none;
       border-bottom: 2px solid rgba(120, 120, 249, 0.7);
-      width: 50%;
+      width: 40%;
 
       color: rgba(120, 120, 249, 0.9);
 
       padding: 5px;
    }
 
+   .buttons-container{
+      display: grid;
+      grid-template-columns: 0.6fr 1.3fr 1fr 1fr 1fr;
+   }
+
    .add_button{
       height: 40px;
       font-size: 18px;
 
-      border: 1px solid rgb(120, 120, 249);
+      /* border: 1px solid rgb(120, 120, 249); */
+      border: none;
       color: rgba(0, 0, 0, 0.4);
 
       background: none;

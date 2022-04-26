@@ -63,7 +63,7 @@ export default {
 
 <style>
    .new_categoty_container{
-      width: 70%;
+      width: 90%;
       padding: 20px;
       margin: 15px;
       border: 1px solid blue;
@@ -72,7 +72,7 @@ export default {
 
    .input_field{
       border: none;
-      border-bottom: 2px solid rgba(120, 120, 249, 0.4);
+      border-bottom: 2px solid rgba(120, 120, 249, 0);
       font-size: 12px;
 
       width: 50%;

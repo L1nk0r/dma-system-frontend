@@ -9,7 +9,7 @@ export default class Question{
       this.question = question;
    }
 
-   add_answer(answer){
+   add_new_answer(answer){
       this.answers.push(answer);
    }
 }
