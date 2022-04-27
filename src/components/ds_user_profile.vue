@@ -188,7 +188,7 @@ export default {
     });
   },
   computed: {
-    ...mapGetters(["TESTS", "NEW_TEST", "NEW_TEST_ELEMENTS"]),
+    ...mapGetters(["TESTS", "NEW_TEST"]),
   },
   methods: {
     ...mapActions([

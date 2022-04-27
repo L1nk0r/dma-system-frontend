@@ -2,7 +2,7 @@
   <div class="new_subcategoty_container">
     <input
       v-model="this.name"
-      placeholder="type here..."
+      placeholder="Имя подкатегории"
       class="input_field"
       @change="changeCategoryName()"
     />

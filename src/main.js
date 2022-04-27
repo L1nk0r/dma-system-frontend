@@ -112,9 +112,6 @@ const store = createStore({
     NEW_TEST(state) {
       return state.new_test;
     },
-    NEW_TEST_ELEMENTS(state) {
-      return state.new_test.elements;
-    },
   },
 });
 

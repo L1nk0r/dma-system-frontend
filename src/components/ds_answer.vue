@@ -5,6 +5,7 @@
       class="input_weight"
       v-model="this.weight"
       @change="set_answer_weight()"
+      placeholder="Вес ответа"
     />
     :
     <input
@@ -12,6 +13,7 @@
       class="input_field"
       v-model="this.name"
       @change="set_answer_name()"
+      placeholder="Ответ"
     />
   </div>
 </template>

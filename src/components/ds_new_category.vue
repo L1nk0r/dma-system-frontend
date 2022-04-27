@@ -3,7 +3,7 @@
     <input
       type="text"
       v-model="this.name"
-      placeholder="type here..."
+      placeholder="Имя категории"
       class="input_field"
       @change="changeCategoryName()"
     />

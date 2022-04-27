@@ -2,7 +2,7 @@
   <div class="question">
     <input
       v-model="this.name"
-      placeholder="type here..."
+      placeholder="Вопрос"
       class="input_field"
       @change="changeQuestionName()"
     />
