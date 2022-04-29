@@ -348,7 +348,10 @@ export default {
       this.ADD_NEW_TEST_NEW_RECIPIENT(str);
     },
     handleFiles(){
-      let upload = this.$refs.recFiles;
+      if (this.$refs.recFiles === undefined){
+        console.log('no file')
+      } else {
+        let upload = this.$refs.recFiles;
 
       let reader = new FileReader();
       reader.onload = function(){
@@ -360,6 +363,7 @@ export default {
       }.bind(this);
 
       reader.readAsText(upload.files[0]);
+      } 
     }
   },
 };
