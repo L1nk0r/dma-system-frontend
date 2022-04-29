@@ -364,6 +364,10 @@ export default {
           }
         }.bind(this);
 
+        reader.onerror = function(){
+          console.log(reader.error);
+        }
+
         reader.readAsText(upload.files[0]);
       } 
     }
