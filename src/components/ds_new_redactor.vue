@@ -4,7 +4,7 @@
       class="input_field"
       v-model="this.red_name"
       @change="setRedactorName()"
-      placeholder="Redactor's name" />
+      placeholder="User's login" />
    </div>   
 </template>
 

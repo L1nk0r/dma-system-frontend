@@ -77,6 +77,26 @@
                </div>
             </div>
 
+            <!-- New test commentators -->
+
+            <div class="raw">
+              <h3>Комментаторы</h3>
+               <p
+                  @click="add_commentator()"
+                  class="p">+</p>
+               <div 
+                class="redactors_container"
+                v-if="this.test_commentators_amount > 0">
+                  <ds-new-redactor 
+                  v-for="com in NEW_TEST.commentators"
+                  :key="com"
+                  :redactor="com"
+               />
+               </div>
+            </div>
+
+            <!-- New test main elements -->
+
             <div class="raw buttons-container">
               <h3>Вопросы</h3>
 
@@ -208,6 +228,7 @@ export default {
         "Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.",
       current_question: null,
       test_redactors_amount: 0,
+      test_commentators_amount: 0
     };
   },
   created() {},
@@ -228,7 +249,8 @@ export default {
       "SET_NEW_TEST_NAME",
       "SET_NEW_TEST_DESCRIPTION",
       "SET_NEW_TEST_RESPONSIBLE_USER",
-      "ADD_NEW_TEST_REDACTOR"
+      "ADD_NEW_TEST_REDACTOR",
+      "ADD_NEW_TEST_COMMENTATOR"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -300,6 +322,11 @@ export default {
        this.test_redactors_amount ++;
        let new_red = new Redactor();
        this.ADD_NEW_TEST_REDACTOR(new_red);
+    },
+    add_commentator(){
+      this.test_commentators_amount ++;
+      let new_com = new Redactor();
+      this.ADD_NEW_TEST_COMMENTATOR(new_com);
     }
   },
 };
