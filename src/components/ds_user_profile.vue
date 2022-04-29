@@ -266,7 +266,8 @@ export default {
       "SET_NEW_TEST_RESPONSIBLE_USER",
       "ADD_NEW_TEST_REDACTOR",
       "ADD_NEW_TEST_COMMENTATOR",
-      "ADD_NEW_TEST_NEW_RECIPIENT"
+      "ADD_NEW_TEST_NEW_RECIPIENT",
+      "REMOVE_ALL_NEW_TEST_RECIPIENTS"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -348,21 +349,22 @@ export default {
       this.ADD_NEW_TEST_NEW_RECIPIENT(str);
     },
     handleFiles(){
+      this.REMOVE_ALL_NEW_TEST_RECIPIENTS();
       if (this.$refs.recFiles === undefined){
         console.log('no file')
       } else {
         let upload = this.$refs.recFiles;
 
-      let reader = new FileReader();
-      reader.onload = function(){
-        let res = reader.result;
-        let string_arr = res.split('\n');
-        for (let i = 0; i<string_arr.length; i++){
-          this.print_str(string_arr[i]);
-        }
-      }.bind(this);
+        let reader = new FileReader();
+        reader.onload = function(){
+          let res = reader.result;
+          let string_arr = res.split('\n');
+          for (let i = 0; i<string_arr.length; i++){
+            this.print_str(string_arr[i]);
+          }
+        }.bind(this);
 
-      reader.readAsText(upload.files[0]);
+        reader.readAsText(upload.files[0]);
       } 
     }
   },

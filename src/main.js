@@ -74,6 +74,9 @@ const store = createStore({
     },
     ADD_TEST_RECIPIENT: (state, recipient_login) => {
       state.new_test.recipients.push(recipient_login);
+    },
+    REMOVE_ALL_TEST_RECIPIENTS: (state) => {
+      state.new_test.recipients = [];
     }
   },
   actions: {
@@ -120,6 +123,9 @@ const store = createStore({
     },
     ADD_NEW_TEST_NEW_RECIPIENT({commit}, recipient){
       commit("ADD_TEST_RECIPIENT", recipient);
+    },
+    REMOVE_ALL_NEW_TEST_RECIPIENTS({commit}){
+      commit("REMOVE_ALL_TEST_RECIPIENTS");
     }
   },
   getters: {
