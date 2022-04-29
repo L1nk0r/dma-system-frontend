@@ -95,6 +95,20 @@
                </div>
             </div>
 
+            <!-- New test recipients input-file field -->
+
+            <div class="raw">
+              <h3> Получатели </h3>
+              <input 
+                type="file"
+                accept=".txt"
+                placeholder="Add file"
+                id="recInput"
+                ref="recFiles"
+                @change="handleFiles()"
+                multiple/>
+            </div>
+
             <!-- New test main elements -->
 
             <div class="raw buttons-container">
@@ -228,7 +242,8 @@ export default {
         "Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.",
       current_question: null,
       test_redactors_amount: 0,
-      test_commentators_amount: 0
+      test_commentators_amount: 0,
+      file_res: '',
     };
   },
   created() {},
@@ -250,7 +265,8 @@ export default {
       "SET_NEW_TEST_DESCRIPTION",
       "SET_NEW_TEST_RESPONSIBLE_USER",
       "ADD_NEW_TEST_REDACTOR",
-      "ADD_NEW_TEST_COMMENTATOR"
+      "ADD_NEW_TEST_COMMENTATOR",
+      "ADD_NEW_TEST_NEW_RECIPIENT"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -327,6 +343,23 @@ export default {
       this.test_commentators_amount ++;
       let new_com = new Redactor();
       this.ADD_NEW_TEST_COMMENTATOR(new_com);
+    },
+    print_str(str){
+      this.ADD_NEW_TEST_NEW_RECIPIENT(str);
+    },
+    handleFiles(){
+      let upload = this.$refs.recFiles;
+
+      let reader = new FileReader();
+      reader.onload = function(){
+        let res = reader.result;
+        let string_arr = res.split('\n');
+        for (let i = 0; i<string_arr.length; i++){
+          this.print_str(string_arr[i]);
+        }
+      }.bind(this);
+
+      reader.readAsText(upload.files[0]);
     }
   },
 };

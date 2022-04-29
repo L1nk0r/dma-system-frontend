@@ -28,7 +28,8 @@ const store = createStore({
       responsible: "",
       elements: [],
       redactors: [],
-      commentators: []
+      commentators: [],
+      recipients: []
     },
   },
   mutations: {
@@ -70,6 +71,9 @@ const store = createStore({
     },
     ADD_TEST_COMMENTATOR: (state, commentator) => {
       state.new_test.commentators.push(commentator);
+    },
+    ADD_TEST_RECIPIENT: (state, recipient_login) => {
+      state.new_test.recipients.push(recipient_login);
     }
   },
   actions: {
@@ -113,6 +117,9 @@ const store = createStore({
     },
     ADD_NEW_TEST_COMMENTATOR({commit}, commentator){
       commit("ADD_TEST_COMMENTATOR", commentator);
+    },
+    ADD_NEW_TEST_NEW_RECIPIENT({commit}, recipient){
+      commit("ADD_TEST_RECIPIENT", recipient);
     }
   },
   getters: {
