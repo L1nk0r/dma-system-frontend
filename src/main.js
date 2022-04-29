@@ -27,6 +27,7 @@ const store = createStore({
       description: "",
       responsible: "",
       elements: [],
+      redactors: []
     },
   },
   mutations: {
@@ -63,6 +64,9 @@ const store = createStore({
     SET_TEST_RESPONSIBLE_USER: (state, responsible_user) => {
       state.new_test.responsible = responsible_user;
     },
+    ADD_TEST_REDACTOR: (state, redactor) => {
+       state.new_test.redactors.push(redactor);
+    }
   },
   actions: {
     onLogin({ commit }, { login, password }) {
@@ -100,6 +104,9 @@ const store = createStore({
     SET_NEW_TEST_RESPONSIBLE_USER({ commit }, user_name) {
       commit("SET_TEST_RESPONSIBLE_USER", user_name);
     },
+    ADD_NEW_TEST_REDACTOR({commit}, redactor){
+       commit("ADD_TEST_REDACTOR", redactor);
+    }
   },
   getters: {
     getServerUrl: (state) => {

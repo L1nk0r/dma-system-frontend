@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <!--                         Header                           -->
     <nav>
       <div class="header">
         <h3>Dma-system</h3>
@@ -9,14 +10,21 @@
       </div>
     </nav>
 
+    <!--                         Tests part                           -->
+
     <div class="tests">
       <div class="group">
         <h1>Tests</h1>
         <button class="addTest" @click="createTestVisible = true">+</button>
+
+        <!--                     New test                             -->
+
         <el-dialog v-model="createTestVisible" title="">
           <h1>Создать новый тест</h1>
           <div class="contaner">
             <div class="raw">
+
+              <!-- New test name -->
               <h3>Название теста</h3>
               <input
                 type="text"
@@ -27,6 +35,7 @@
               />
             </div>
 
+            <!-- New test description -->
             <div class="raw">
               <h3>Описание</h3>
               <input
@@ -39,6 +48,7 @@
               />
             </div>
 
+            <!-- New test responsible user  -->
             <div class="raw">
               <h3>Ответственный</h3>
               <input
@@ -48,6 +58,23 @@
                 v-model="this.test_responsible_user"
                 @change="changeNewTestResponsibleUser()"
               />
+            </div>
+
+            <!-- New test redactors -->
+            <div class="raw">
+              <h3>Редакторы</h3>
+               <p
+                  @click="add_redactor()"
+                  class="p">+</p>
+               <div 
+                class="redactors_container"
+                v-if="this.test_redactors_amount > 0">
+                  <ds-new-redactor 
+                  v-for="red in NEW_TEST.redactors"
+                  :key="red"
+                  :redactor="red"
+               />
+               </div>
             </div>
 
             <div class="raw buttons-container">
@@ -123,18 +150,21 @@
 <script>
 import dsTestCart from "./ds_test_cart.vue";
 import dsNewCategory from "./ds_new_category.vue";
+import dsNewRedactor from "./ds_new_redactor.vue"
 import { mapActions, mapGetters } from "vuex";
 
 import Category from "../elements/category";
 import SubCategory from "../elements/subcategory";
 import Question from "../elements/question";
 import Answer from "../elements/answer";
+import Redactor from "../elements/redactor"
 
 export default {
   name: "Profile_tests",
   components: {
     dsTestCart,
     dsNewCategory,
+    dsNewRedactor
   },
   data() {
     return {
@@ -177,6 +207,7 @@ export default {
       false_type_msg:
         "Sorry, but this category already contain sub categories. To add new question leave this category or add new sub category.",
       current_question: null,
+      test_redactors_amount: 0,
     };
   },
   created() {},
@@ -197,6 +228,7 @@ export default {
       "SET_NEW_TEST_NAME",
       "SET_NEW_TEST_DESCRIPTION",
       "SET_NEW_TEST_RESPONSIBLE_USER",
+      "ADD_NEW_TEST_REDACTOR"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -264,6 +296,11 @@ export default {
         return 1;
       }
     },
+    add_redactor(){
+       this.test_redactors_amount ++;
+       let new_red = new Redactor();
+       this.ADD_NEW_TEST_REDACTOR(new_red);
+    }
   },
 };
 </script>
@@ -299,6 +336,18 @@ export default {
 
 .raw h3 {
   margin-right: 15px;
+  width: 200px;
+}
+
+.p{
+  padding: 5px 5px;
+  border: 1px solid red;
+  border-radius: 1px;
+  margin: 10px;
+}
+
+.p:hover{
+   cursor: pointer;
 }
 
 .input_field {
@@ -441,6 +490,12 @@ nav .user_status {
 
 .questions_container {
   align-content: center;
+}
+
+.redactors_container{
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 50%;
 }
 
 @font-face {
