@@ -2,7 +2,6 @@
 export default class SubCategory{
    constructor(n){
       this.name = 'New SubCategory' + n;
-      this.id = n;
       this.elements = [];
 
       this.elements_type = '';

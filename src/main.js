@@ -23,13 +23,15 @@ const store = createStore({
     },
     tests: [],
     new_test: {
-      name: "",
-      description: "",
-      responsible: "",
-      elements: [],
+      name: "No name",
+      creator: "<ThisUserName>",
+      description: "No description",
+      responsible: "No responsible user",
+      creation_date: null,
+      categories: [],
       redactors: [],
       commentators: [],
-      recipients: []
+      passing: []
     },
   },
   mutations: {
@@ -54,7 +56,7 @@ const store = createStore({
       /* console.log(state.tests); */
     },
     ADD_NEW_ELEMENT: (state, element) => {
-      state.new_test.elements.push(element);
+      state.new_test.categories.push(element);
     },
     SET_TEST_NAME: (state, name) => {
       state.new_test.name = name;
@@ -73,10 +75,13 @@ const store = createStore({
       state.new_test.commentators.push(commentator);
     },
     ADD_TEST_RECIPIENT: (state, recipient_login) => {
-      state.new_test.recipients.push(recipient_login);
+      state.new_test.passing.push(recipient_login);
     },
     REMOVE_ALL_TEST_RECIPIENTS: (state) => {
-      state.new_test.recipients = [];
+      state.new_test.passing = [];
+    },
+    SET_TEST_CREACTION_DATE: (state, date) => {
+      state.new_test.creation_date = date;
     }
   },
   actions: {
@@ -126,6 +131,9 @@ const store = createStore({
     },
     REMOVE_ALL_NEW_TEST_RECIPIENTS({commit}){
       commit("REMOVE_ALL_TEST_RECIPIENTS");
+    },
+    SET_NEW_TEST_CREACTION_DATE({commit}, date){
+      commit("SET_TEST_CREACTION_DATE", date);
     }
   },
   getters: {
@@ -146,9 +154,5 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 app.use(ElementPlus);
-
-/* app.use(Category);
-app.use(SubCategory);
-app.use(Question); */
 
 app.mount("#app");

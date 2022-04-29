@@ -153,6 +153,9 @@
                 :category="elem"
               />
             </div>
+
+          <button @click="submitForm()" class="submitBtn"> Submit </button>
+
           </div>
         </el-dialog>
       </div>
@@ -255,7 +258,7 @@ export default {
     });
   },
   computed: {
-    ...mapGetters(["TESTS", "NEW_TEST"]),
+    ...mapGetters(["TESTS", "NEW_TEST", "getServerUrl"]),
   },
   methods: {
     ...mapActions([
@@ -267,7 +270,8 @@ export default {
       "ADD_NEW_TEST_REDACTOR",
       "ADD_NEW_TEST_COMMENTATOR",
       "ADD_NEW_TEST_NEW_RECIPIENT",
-      "REMOVE_ALL_NEW_TEST_RECIPIENTS"
+      "REMOVE_ALL_NEW_TEST_RECIPIENTS",
+      "SET_NEW_TEST_CREACTION_DATE"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -370,6 +374,20 @@ export default {
 
         reader.readAsText(upload.files[0]);
       } 
+    },
+    submitForm(){
+      let today = new Date().toISOString().slice(0, 10);
+      this.SET_NEW_TEST_CREACTION_DATE(today);
+      const options = {
+        method: 'POST',
+        body: JSON.stringify( this.NEW_TEST )
+      };
+      fetch(`${this.getServerUrl}/tests`, options)
+        .then(response => response.json())
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
     }
   },
 };
@@ -564,6 +582,32 @@ nav .user_status {
   /* border: 1px solid black; */
   border-radius: 15px;
   width: 50%;
+}
+
+.submitBtn{
+  width: 200px;
+  height: 50px;
+
+  cursor: pointer;
+
+  background: none;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #BF9F80;
+
+  border: 1px solid #BF9F80;
+  box-sizing: border-box;
+  border-radius: 15px;
+
+  transition: 0.6s;
+}
+
+.submitBtn:hover{
+  background-color: #BF9F80;
+  color: #fff;
 }
 
 @font-face {

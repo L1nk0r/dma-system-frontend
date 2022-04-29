@@ -2,7 +2,6 @@
 export default class Category{
    constructor(n){
       this.name = 'New category ' + n;
-      this.id = n;
       this.elements = [];
 
       console.log(this.name);
