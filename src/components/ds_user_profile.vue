@@ -341,8 +341,6 @@ export default {
 
 .p{
   padding: 5px 5px;
-  border: 1px solid red;
-  border-radius: 1px;
   margin: 10px;
 }
 
@@ -493,7 +491,7 @@ nav .user_status {
 }
 
 .redactors_container{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 15px;
   width: 50%;
 }
