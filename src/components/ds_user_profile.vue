@@ -148,7 +148,7 @@
                 <p>Current category: {{ this.current_category.name }}</p>
               </div>
               <ds-new-category
-                v-for="elem in NEW_TEST.elements"
+                v-for="elem in NEW_TEST.categories"
                 :key="elem.id"
                 :category="elem"
               />
@@ -247,6 +247,7 @@ export default {
       test_redactors_amount: 0,
       test_commentators_amount: 0,
       file_res: '',
+      testId: null
     };
   },
   created() {},
@@ -271,7 +272,8 @@ export default {
       "ADD_NEW_TEST_COMMENTATOR",
       "ADD_NEW_TEST_NEW_RECIPIENT",
       "REMOVE_ALL_NEW_TEST_RECIPIENTS",
-      "SET_NEW_TEST_CREACTION_DATE"
+      "SET_NEW_TEST_CREACTION_DATE",
+      "SET_NEW_TEST"
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -378,16 +380,8 @@ export default {
     submitForm(){
       let today = new Date().toISOString().slice(0, 10);
       this.SET_NEW_TEST_CREACTION_DATE(today);
-      const options = {
-        method: 'POST',
-        body: JSON.stringify( this.NEW_TEST )
-      };
-      fetch(`${this.getServerUrl}/tests`, options)
-        .then(response => response.json())
-        .catch(error => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
-        });
+
+      this.SET_NEW_TEST();
     }
   },
 };

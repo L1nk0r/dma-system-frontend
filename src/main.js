@@ -9,10 +9,6 @@ import { AuthApi } from "./auth/AuthApi";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-/* 
-import {Category} from '@/elements/category'
-import {SubCategory} from '@/elements/subcategory'
-import {Question} from '@/elements/question' */
 
 const store = createStore({
   state: {
@@ -53,14 +49,12 @@ const store = createStore({
     },
     SET_TESTS_TO_STATE: (state, tests) => {
       state.tests = tests;
-      /* console.log(state.tests); */
     },
     ADD_NEW_ELEMENT: (state, element) => {
       state.new_test.categories.push(element);
     },
     SET_TEST_NAME: (state, name) => {
       state.new_test.name = name;
-      /* console.log(state.new_test.name); */
     },
     SET_TEST_DESCRIPTION: (state, description) => {
       state.new_test.description = description;
@@ -106,6 +100,28 @@ const store = createStore({
         .catch((error) => {
           console.log(error);
           return error;
+        });
+    },
+    SET_NEW_TEST(){
+      const data = {
+        name: this.state.new_test.name,
+        description: this.state.new_test.description,
+        creator: this.state.new_test.creator,
+        responsible: this.state.new_test.responsible,
+        test_status: "Finished",
+        redactors: this.state.new_test.redactors,
+        creation_date: this.state.new_test.creation_date,
+        passing: this.state.new_test.passing,
+        categories: this.state.new_test.categories
+      };
+
+      console.log(JSON.stringify(data));
+
+      axios.post(`${this.state.BACKEND_URL}/tests/`, data)
+        .then(response => this.testId = response.data.id)
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
         });
     },
     ADD_NEW_ELEMENT_TO_NEW_TEST({ commit }, element) {
