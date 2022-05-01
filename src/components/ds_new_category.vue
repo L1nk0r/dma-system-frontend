@@ -10,7 +10,7 @@
 
     <div class="categories_container" v-if="category.elements_type === 'cat'">
       <ds-sub-category
-        v-for="sub_cat in category.elements"
+        v-for="sub_cat in category.categories"
         :key="sub_cat.id"
         :subCategory="sub_cat"
       />
@@ -18,7 +18,7 @@
 
     <div class="categories_container" v-if="category.elements_type === 'que'">
       <ds-question
-        v-for="que in category.elements"
+        v-for="que in category.questions"
         :key="que.id"
         :question="que"
       />

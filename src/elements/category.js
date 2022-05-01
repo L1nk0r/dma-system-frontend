@@ -2,7 +2,8 @@
 export default class Category{
    constructor(n){
       this.name = 'New category ' + n;
-      this.elements = [];
+      this.categories = [];
+      this.questions = [];
 
       console.log(this.name);
 
@@ -10,11 +11,11 @@ export default class Category{
    }
 
    add_sub_category(sub_category){
-      this.elements.push(sub_category);
+      this.categories.push(sub_category);
    }
 
    add_question(question){
-      this.elements.push(question);
+      this.questions.push(question);
    }
 
    set_name(name){

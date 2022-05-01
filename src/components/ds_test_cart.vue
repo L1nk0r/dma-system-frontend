@@ -7,9 +7,9 @@
          <h3>{{ cart_data.name }}</h3>
 
          <el-tag
-            v-if="this.getStatus() === 'Finished'"
+            v-if="this.getStatus() === 'Closed'"
             type="success">            
-            Finished
+            Closed
          </el-tag>
 
          <el-tag
@@ -70,8 +70,8 @@ export default{
          let s = this.cart_data.status;
          if (s === 'IN_PROCESS'){
             return 'In process'
-         } else if (s === 'FINISHED'){
-            return 'Finished'
+         } else if (s === 'CLOSED'){
+            return 'Closed'
          } else if (s === 'APPROVED'){
             return 'Approved'
          } else {

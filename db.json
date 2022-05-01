@@ -7,43 +7,6 @@
   ],
   "tests": [
     {
-      "id": 1,
-      "name": "Global info",
-      "description": "This test is about you and your global goals.",
-      "questins": [
-        {
-          "question": "What is your main dream?",
-          "answers": [
-            "buy new car",
-            "buy new house",
-            "move to another country",
-            "find new girlfriend"
-          ]
-        },
-        {
-          "question": "How old are you?",
-          "answers": [
-            "0-18",
-            "18-25",
-            "25-40",
-            "more than 40"
-          ]
-        },
-        {
-          "question": "How are you?",
-          "answers": [
-            "Good!",
-            "Exelent!",
-            "Dissapointed",
-            "Depressed"
-          ]
-        }
-      ],
-      "people_amount": 100,
-      "already_finished": 29,
-      "status": "IN_PROCESS"
-    },
-    {
       "id": 2,
       "name": "Point of view",
       "description": "Tell us your opinion about situation in the world.",
@@ -78,7 +41,7 @@
       ],
       "people_amount": 90,
       "already_finished": 10,
-      "status": "FINISHED"
+      "status": "CLOSED"
     },
     {
       "id": 3,
@@ -115,7 +78,7 @@
       ],
       "people_amount": 78,
       "already_finished": 56,
-      "status": "FINISHED"
+      "status": "CLOSED"
     },
     {
       "id": 4,
@@ -190,18 +153,6 @@
       "people_amount": 10,
       "already_finished": 2,
       "status": "PUBLISHED"
-    },
-    {
-      "name": "No name",
-      "description": "No description",
-      "creator": "<ThisUserName>",
-      "responsible": "No responsible user",
-      "test_status": "Finished",
-      "redactors": [],
-      "creation_date": "2022-04-30",
-      "passing": [],
-      "categories": [],
-      "id": 6
     }
   ]
 }

@@ -22,11 +22,10 @@ const store = createStore({
       name: "No name",
       creator: "<ThisUserName>",
       description: "No description",
-      responsible: "No responsible user",
+      responsible: null,
       creation_date: null,
       categories: [],
       redactors: [],
-      commentators: [],
       passing: []
     },
   },
@@ -64,9 +63,6 @@ const store = createStore({
     },
     ADD_TEST_REDACTOR: (state, redactor) => {
        state.new_test.redactors.push(redactor);
-    },
-    ADD_TEST_COMMENTATOR: (state, commentator) => {
-      state.new_test.commentators.push(commentator);
     },
     ADD_TEST_RECIPIENT: (state, recipient_login) => {
       state.new_test.passing.push(recipient_login);
@@ -138,9 +134,6 @@ const store = createStore({
     },
     ADD_NEW_TEST_REDACTOR({commit}, redactor){
        commit("ADD_TEST_REDACTOR", redactor);
-    },
-    ADD_NEW_TEST_COMMENTATOR({commit}, commentator){
-      commit("ADD_TEST_COMMENTATOR", commentator);
     },
     ADD_NEW_TEST_NEW_RECIPIENT({commit}, recipient){
       commit("ADD_TEST_RECIPIENT", recipient);

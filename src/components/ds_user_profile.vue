@@ -77,28 +77,20 @@
                </div>
             </div>
 
-            <!-- New test commentators -->
-
-            <div class="raw">
-              <h3>Комментаторы</h3>
-               <p
-                  @click="add_commentator()"
-                  class="p">+</p>
-               <div 
-                class="redactors_container"
-                v-if="this.test_commentators_amount > 0">
-                  <ds-new-redactor 
-                  v-for="com in NEW_TEST.commentators"
-                  :key="com"
-                  :redactor="com"
-               />
-               </div>
-            </div>
-
             <!-- New test recipients input-file field -->
 
             <div class="raw">
-              <h3> Получатели </h3>
+              <el-popover
+                placement="top-start"
+                title="Файлы"
+                :width="200"
+                trigger="hover"
+                content="Пожалуйста, используйте только файлы формата .txt"
+              >
+                <template #reference>
+                  <h3> Получатели </h3>
+                </template>
+              </el-popover>
               <input 
                 type="file"
                 accept=".txt"
@@ -228,8 +220,8 @@ export default {
           value: "PUBLISHED",
         },
         {
-          label: "Finished",
-          value: "FINISHED",
+          label: "Closed",
+          value: "CLOSED",
         },
       ],
       filter: "",
@@ -269,7 +261,6 @@ export default {
       "SET_NEW_TEST_DESCRIPTION",
       "SET_NEW_TEST_RESPONSIBLE_USER",
       "ADD_NEW_TEST_REDACTOR",
-      "ADD_NEW_TEST_COMMENTATOR",
       "ADD_NEW_TEST_NEW_RECIPIENT",
       "REMOVE_ALL_NEW_TEST_RECIPIENTS",
       "SET_NEW_TEST_CREACTION_DATE",
@@ -332,7 +323,9 @@ export default {
       this.SET_NEW_TEST_DESCRIPTION(this.test_description);
     },
     changeNewTestResponsibleUser() {
-      this.SET_NEW_TEST_RESPONSIBLE_USER(this.test_responsible_user);
+      let resp = new Redactor();
+      resp.set_login(this.test_responsible_user);
+      this.SET_NEW_TEST_RESPONSIBLE_USER(resp);
     },
     checkType() {
       if (this.current_category.elements_type === "que") {
@@ -345,11 +338,6 @@ export default {
        this.test_redactors_amount ++;
        let new_red = new Redactor();
        this.ADD_NEW_TEST_REDACTOR(new_red);
-    },
-    add_commentator(){
-      this.test_commentators_amount ++;
-      let new_com = new Redactor();
-      this.ADD_NEW_TEST_COMMENTATOR(new_com);
     },
     print_str(str){
       this.ADD_NEW_TEST_NEW_RECIPIENT(str);
