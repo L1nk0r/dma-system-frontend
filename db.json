@@ -153,6 +153,69 @@
       "people_amount": 10,
       "already_finished": 2,
       "status": "PUBLISHED"
+    },
+    {
+      "name": "new",
+      "description": "desc",
+      "creator": "<ThisUserName>",
+      "responsible": {
+        "login": "resp"
+      },
+      "test_status": "In process",
+      "redactors": [
+        {
+          "login": "red@red.cock"
+        }
+      ],
+      "creation_date": "2022-05-01",
+      "passing": [
+        "ardagna@me.com",
+        "spadkins@msn.com",
+        "tellis@outlook.com",
+        "matty@hotmail.com",
+        "jgoerzen@aol.com"
+      ],
+      "categories": [
+        {
+          "name": "cat",
+          "categories": [
+            {
+              "name": "scat",
+              "questions": [
+                {
+                  "question": "que",
+                  "answers": [
+                    {
+                      "text": "text (какого то хуя)",
+                      "weight": "3"
+                    }
+                  ]
+                }
+              ],
+              "elements_type": "que"
+            }
+          ],
+          "questions": [],
+          "elements_type": "cat"
+        },
+        {
+          "name": "cat 2",
+          "categories": [],
+          "questions": [
+            {
+              "question": "que 2",
+              "answers": [
+                {
+                  "text": "ans (так правильно)",
+                  "weight": "3"
+                }
+              ]
+            }
+          ],
+          "elements_type": "que"
+        }
+      ],
+      "id": 7
     }
   ]
 }

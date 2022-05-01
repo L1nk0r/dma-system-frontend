@@ -208,10 +208,6 @@ export default {
           value: "IN_PROCESS",
         },
         {
-          label: "Done",
-          value: "DONE",
-        },
-        {
           label: "Approved",
           value: "APPROVED",
         },

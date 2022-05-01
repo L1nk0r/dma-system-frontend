@@ -104,7 +104,7 @@ const store = createStore({
         description: this.state.new_test.description,
         creator: this.state.new_test.creator,
         responsible: this.state.new_test.responsible,
-        test_status: "Finished",
+        test_status: "IN_PROCESS",
         redactors: this.state.new_test.redactors,
         creation_date: this.state.new_test.creation_date,
         passing: this.state.new_test.passing,

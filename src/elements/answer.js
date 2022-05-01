@@ -1,12 +1,12 @@
 
 export default class Answer{
    constructor(){
-      this.answer = 'new_answer';
+      this.text = 'new_answer';
       this.weight = 0;
    }
 
    set_answer(answer){
-      this.answer = answer;
+      this.text = answer;
    }
 
    set_weight(weight){

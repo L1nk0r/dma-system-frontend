@@ -8,7 +8,7 @@
     />
 
     <ds-question
-      v-for="ques in subCategory.elements"
+      v-for="ques in subCategory.questions"
       :key="ques.id"
       :question="ques"
     />
