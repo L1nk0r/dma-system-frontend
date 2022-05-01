@@ -7,164 +7,22 @@
   ],
   "tests": [
     {
-      "id": 2,
-      "name": "Point of view",
-      "description": "Tell us your opinion about situation in the world.",
-      "questins": [
-        {
-          "question": "What is your main dream?",
-          "answers": [
-            "buy new car",
-            "buy new house",
-            "move to another country",
-            "find new girlfriend"
-          ]
-        },
-        {
-          "question": "How old are you?",
-          "answers": [
-            "0-18",
-            "18-25",
-            "25-40",
-            "more than 40"
-          ]
-        },
-        {
-          "question": "How are you?",
-          "answers": [
-            "Good!",
-            "Exelent!",
-            "Dissapointed",
-            "Depressed"
-          ]
-        }
-      ],
-      "people_amount": 90,
-      "already_finished": 10,
-      "status": "CLOSED"
-    },
-    {
-      "id": 3,
-      "name": "Job",
-      "description": "Do you feel good on your job?",
-      "questins": [
-        {
-          "question": "What is your main dream?",
-          "answers": [
-            "buy new car",
-            "buy new house",
-            "move to another country",
-            "find new girlfriend"
-          ]
-        },
-        {
-          "question": "How old are you?",
-          "answers": [
-            "0-18",
-            "18-25",
-            "25-40",
-            "more than 40"
-          ]
-        },
-        {
-          "question": "How are you?",
-          "answers": [
-            "Good!",
-            "Exelent!",
-            "Dissapointed",
-            "Depressed"
-          ]
-        }
-      ],
-      "people_amount": 78,
-      "already_finished": 56,
-      "status": "CLOSED"
-    },
-    {
-      "id": 4,
-      "name": "Relations",
-      "description": "Have you got any problems with your closest relatives?",
-      "questins": [
-        {
-          "question": "What is your main dream?",
-          "answers": [
-            "buy new car",
-            "buy new house",
-            "move to another country",
-            "find new girlfriend"
-          ]
-        },
-        {
-          "question": "How old are you?",
-          "answers": [
-            "0-18",
-            "18-25",
-            "25-40",
-            "more than 40"
-          ]
-        },
-        {
-          "question": "How are you?",
-          "answers": [
-            "Good!",
-            "Exelent!",
-            "Dissapointed",
-            "Depressed"
-          ]
-        }
-      ],
-      "people_amount": 50,
-      "already_finished": 37,
-      "status": "APPROVED"
-    },
-    {
-      "id": 5,
-      "name": "Hobbys",
-      "description": "Tell us about your hobby!",
-      "questins": [
-        {
-          "question": "What is your main dream?",
-          "answers": [
-            "buy new car",
-            "buy new house",
-            "move to another country",
-            "find new girlfriend"
-          ]
-        },
-        {
-          "question": "How old are you?",
-          "answers": [
-            "0-18",
-            "18-25",
-            "25-40",
-            "more than 40"
-          ]
-        },
-        {
-          "question": "How are you?",
-          "answers": [
-            "Good!",
-            "Exelent!",
-            "Dissapointed",
-            "Depressed"
-          ]
-        }
-      ],
-      "people_amount": 10,
-      "already_finished": 2,
-      "status": "PUBLISHED"
-    },
-    {
-      "name": "new",
-      "description": "desc",
+      "name": "Точка зрения",
+      "description": "Расскажите нам вашу точку зрения о происходящем в мире",
       "creator": "<ThisUserName>",
       "responsible": {
-        "login": "resp"
+        "login": "lina_maltceva@gmail.com"
       },
-      "test_status": "In process",
+      "test_status": "IN_PROCESS",
       "redactors": [
         {
-          "login": "red@red.cock"
+          "login": "bskozlov@gmail.com"
+        },
+        {
+          "login": "bskozlov1@gmail.com"
+        },
+        {
+          "login": "bskozlov2@gmail.com"
         }
       ],
       "creation_date": "2022-05-01",
@@ -177,17 +35,90 @@
       ],
       "categories": [
         {
-          "name": "cat",
+          "name": "Политика",
           "categories": [
             {
-              "name": "scat",
+              "name": "Внешняя политика",
               "questions": [
                 {
-                  "question": "que",
+                  "question": "Для чего, по вашему, спецоперация на украине?",
                   "answers": [
                     {
-                      "text": "text (какого то хуя)",
+                      "text": "Стабилизации экономики",
+                      "weight": "1"
+                    },
+                    {
+                      "text": "Не дать НАТО подобраться близко к границам",
+                      "weight": "2"
+                    },
+                    {
+                      "text": "Денационализация",
+                      "weight": "4"
+                    },
+                    {
+                      "text": "Другое",
                       "weight": "3"
+                    }
+                  ]
+                },
+                {
+                  "question": "Когда, вы считаете, это закончиться?",
+                  "answers": [
+                    {
+                      "text": "До конца года",
+                      "weight": "3"
+                    },
+                    {
+                      "text": "До конца следующего года",
+                      "weight": "2"
+                    },
+                    {
+                      "text": "В течении месяца",
+                      "weight": "4"
+                    }
+                  ]
+                }
+              ],
+              "elements_type": "que"
+            },
+            {
+              "name": "Внутренняя политика",
+              "questions": [
+                {
+                  "question": "Чем вы готовы пожертвовать ради поднятия пенсий?",
+                  "answers": [
+                    {
+                      "text": "Зарплаты льготников",
+                      "weight": "2"
+                    },
+                    {
+                      "text": "Ввели бы высокие налоги",
+                      "weight": "3"
+                    },
+                    {
+                      "text": "Ввязались бы в войну для получения финансовой помощи от крупных альянсов",
+                      "weight": "6"
+                    },
+                    {
+                      "text": "Финансирование армии",
+                      "weight": "10"
+                    }
+                  ]
+                },
+                {
+                  "question": "Какая по вашему должна быть пенсия?",
+                  "answers": [
+                    {
+                      "text": "10-20 тыс. рублей",
+                      "weight": "1"
+                    },
+                    {
+                      "text": "20-30 тыс. рублей",
+                      "weight": "2"
+                    },
+                    {
+                      "text": "40-50 тыс. рублей",
+                      "weight": "4"
                     }
                   ]
                 }
@@ -197,25 +128,9 @@
           ],
           "questions": [],
           "elements_type": "cat"
-        },
-        {
-          "name": "cat 2",
-          "categories": [],
-          "questions": [
-            {
-              "question": "que 2",
-              "answers": [
-                {
-                  "text": "ans (так правильно)",
-                  "weight": "3"
-                }
-              ]
-            }
-          ],
-          "elements_type": "que"
         }
       ],
-      "id": 7
+      "id": 1
     }
   ]
 }

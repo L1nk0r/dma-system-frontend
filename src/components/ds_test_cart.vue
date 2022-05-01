@@ -28,10 +28,7 @@
             {{ cart_data.description}}
          </p>
       </div>
-      <div class="test_progress">
-         <!-- <p>
-            {{ this.getStatus() }}
-         </p> -->
+      <div class="test_progress" v-if="this.getStatus() === 'Published'">
          <p>
             {{ this.getPeopleAmount() }}
          </p>
@@ -40,7 +37,23 @@
    </div>
 
    <el-dialog v-model="modalVisible" title="Edit test">
+         <el-steps :active="this.active" finish-status="success">
+            <el-step title="In process" />
+            <el-step title="Approved" />
+            <el-step title="Published" />
+            <el-step title="Closed" />
+         </el-steps>
          <h1>{{ cart_data.name }}</h1>
+         <p class="desc_p">{{ cart_data.description }} </p>
+         <div class="desc_p">
+            Responsible user: <div class="br">{{ cart_data.responsible.login }}</div>
+         </div>
+         <h4> Redactors: </h4>
+         <ul class="zebra">
+            <li
+            v-for="item in cart_data.redactors"
+            :key="item"> {{ item.login }} </li>
+         </ul>
   </el-dialog>
 
 </template>
@@ -51,6 +64,7 @@ export default{
       return {
          modalVisible: false,
          form: '',
+         active: 2
       }
    },
    props:{
@@ -67,25 +81,31 @@ export default{
          return this.cart_data.already_finished + '/' + this.cart_data.people_amount;
       },
       getStatus(){
-         let s = this.cart_data.status;
+         let s = this.cart_data.test_status;
          if (s === 'IN_PROCESS'){
+            this.active = 0;
             return 'In process'
          } else if (s === 'CLOSED'){
+            this.active = 1;
             return 'Closed'
          } else if (s === 'APPROVED'){
+            this.active = 2;
             return 'Approved'
          } else {
+            this.active = 3;
             return 'Published'
          }
       }
    },
    created(){
-      
+
    }
 }
 </script>
 
 <style>
+   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
+
    .cart{
       margin: 15px;
       height: 200px;
@@ -131,7 +151,6 @@ export default{
    }
 
    .cart .test_progress{
-      /* background-color: green; */
       text-align: right;
       color: rgba(0, 0, 0, 0.7);
       border-radius: 5px;
@@ -144,4 +163,22 @@ export default{
       margin-right: 7px;
       margin-top: 2px;
    }
+
+   .desc_p{
+      font-size: 20px;
+      font-family: "Montserrat", sans-serif;
+   }
+
+   .desc_p .br{
+      color: darkblue;
+   }
+
+   .zebra {
+      list-style: none;
+      padding: 0;
+      width: 40%;
+   }
+   .zebra li {padding: 10px;}
+   .zebra li:nth-child(odd) {background: #E1F1FF;}
+   .zebra li:nth-child(even) {background: white;}
 </style>
