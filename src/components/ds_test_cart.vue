@@ -54,12 +54,24 @@
             v-for="item in cart_data.redactors"
             :key="item"> {{ item.login }} </li>
          </ul>
+         <div class="questions_container">
+            <ds-edit-category
+                v-for="elem in cart_data.categories"
+                :key="elem.id"
+                :category="elem"
+            />
+         </div>
   </el-dialog>
 
 </template>
 
 <script>
+import dsEditCategory from "./ds_edit_dir/ds_edit_category.vue"
 export default{
+   name: 'testCart',
+   components: {
+      dsEditCategory
+   },
    data(){
       return {
          modalVisible: false,
