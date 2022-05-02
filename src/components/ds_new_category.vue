@@ -51,7 +51,7 @@ export default {
       this.category.set_name(this.name);
     },
     chooseCategory() {
-      console.log(this.category.name);
+      /* console.log(this.category.name); */
     },
   },
   computed: {},

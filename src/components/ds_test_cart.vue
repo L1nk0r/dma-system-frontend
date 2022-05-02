@@ -98,13 +98,13 @@ export default{
             this.active = 0;
             return 'In process'
          } else if (s === 'CLOSED'){
-            this.active = 1;
+            this.active = 3;
             return 'Closed'
          } else if (s === 'APPROVED'){
-            this.active = 2;
+            this.active = 1;
             return 'Approved'
          } else {
-            this.active = 3;
+            this.active = 2;
             return 'Published'
          }
       }
