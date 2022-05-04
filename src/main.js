@@ -98,6 +98,19 @@ const store = createStore({
           return error;
         });
     },
+    GET_TEST_FROM_API_BY_ID({commit}, id){
+      return axios(`${this.getters.getServerUrl}/tests/${id}`, {
+        method: "GET",
+      }) 
+        .then((response) => {
+          commit("", response.data);
+          return response
+        })
+        .catch((error) => {
+          console.log(error);
+          return error;
+        })
+    },
     SET_NEW_TEST(){
       const data = {
         name: this.state.new_test.name,

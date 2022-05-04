@@ -107,7 +107,7 @@
               <h3>Вопросы</h3>
 
               <button class="add_button" @click="add_category()">
-                Добавить категрию
+                Добавить категорию
               </button>
 
               <button

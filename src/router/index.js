@@ -3,6 +3,7 @@ import dsIndex from "@/components/ds_index.vue";
 import dsLogin from "@/components/ds_login.vue";
 import dsReg from "@/components/ds_reg.vue";
 import dsUserProfile from "@/components/ds_user_profile.vue"
+import dsTest from "@/components/ds_test.vue"
 
 const routes = [
    {
@@ -24,6 +25,11 @@ const routes = [
       path: "/tests",
       name: "Tests",
       component: dsUserProfile,
+   },
+   {
+      path: "/test",
+      name: "Test",
+      component: dsTest,
    }
 ];
 
