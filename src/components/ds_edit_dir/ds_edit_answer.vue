@@ -34,8 +34,12 @@ export default {
     },
   },
   methods: {
-    set_answer_name() { },
-    set_answer_weight() { }
+    set_answer_name() {
+      this.answer.set_answer(this.name);
+    },
+    set_answer_weight() {
+      this.answer.set_weight(this.weight);
+    },
   },
   mounted(){
      this.weight = this.answer.weight;

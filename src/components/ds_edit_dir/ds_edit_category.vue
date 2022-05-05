@@ -47,7 +47,9 @@ export default {
     },
   },
   methods: {
-    changeCategoryName() { },
+    changeCategoryName() {
+      this.category.set_name(this.name);
+    },
     chooseCategory() {
       /* console.log(this.category.name); */
     },

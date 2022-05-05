@@ -14,12 +14,10 @@
 </template>
 
 <script>
-/* import dsAnswer from "./ds_answer.vue"; */
 import dsEditAnswer from "./ds_edit_answer.vue"
 export default {
   name: "dsEditQuestion",
   components: {
-    /* dsAnswer, */
     dsEditAnswer
   },
   data() {
@@ -34,7 +32,9 @@ export default {
     },
   },
   methods: {
-    changeQuestionName() { },
+    changeQuestionName() {
+      this.question.set_question(this.name);
+    },
   },
   mounted() {
      this.name = this.question.question;

@@ -35,11 +35,9 @@ export default {
   },
   methods: {
     set_answer_name() {
-      console.log(this.name);
       this.answer.set_answer(this.name);
     },
     set_answer_weight() {
-      console.log(this.weight);
       this.answer.set_weight(this.weight);
     },
   },

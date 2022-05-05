@@ -7,7 +7,7 @@ export default class Answer{
       } else {
          var apiResponse = options;
          this.text = apiResponse.text;
-         this.weight = apiResponse.text;
+         this.weight = apiResponse.weight;
       }
    }
 
