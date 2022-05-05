@@ -3,6 +3,7 @@ import Category from "./category";
 
 export default class Test{
    constructor(apiResponse){
+      this.id = apiResponse.id;
       this.name = apiResponse.name;
       this.description = apiResponse.description;
       this.creator = apiResponse.creator;

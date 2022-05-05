@@ -61,12 +61,17 @@
                 :category="elem"
             />
          </div>
+         <button
+            class="submitBtn"
+            @click="saveEditedTest()"> Save </button>
   </el-dialog>
 
 </template>
 
 <script>
 import dsEditCategory from "./ds_edit_dir/ds_edit_category.vue"
+import { mapActions, mapGetters } from "vuex";
+import axios from "axios";
 export default{
    name: 'testCart',
    components: {
@@ -85,7 +90,13 @@ export default{
          default: () => {}
       }
    },
+   computed: {
+      ...mapGetters(["getServerUrl"]),
+   },
    methods:{
+      ...mapActions([
+         "SAVE_TEST_TO_SERVER"
+      ]),
       getQuestionsAmount(){
          return this.cart_data.questins.length;
       },
@@ -107,6 +118,28 @@ export default{
             this.active = 2;
             return 'Published'
          }
+      },
+      saveEditedTest(){
+         console.log(this.cart_data.id);
+
+         const data = {
+            name: this.cart_data.name,
+            description: this.cart_data.description,
+            creator: this.cart_data.creator,
+            responsible: this.cart_data.responsible,
+            test_status: "IN_PROCESS",
+            redactors: this.cart_data.redactors,
+            creation_date: this.cart_data.creation_date,
+            passing: this.cart_data.passing,
+            categories: this.cart_data.categories
+         };
+
+         axios.put(`${this.getServerUrl}/tests/${this.cart_data.id}`, data)
+            .then(response => this.testId = response.data.id)
+            .catch(error => {
+            this.errorMessage = error.message;
+            console.error("There was an error!", error);
+            });
       }
    },
    created(){

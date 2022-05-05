@@ -137,6 +137,19 @@ const store = createStore({
           console.error("There was an error!", error);
         });
     },
+    SAVE_TEST_TO_SERVER(editedTest){
+      let eData = JSON.stringify(editedTest);
+      console.log(editedTest.id);
+      console.log(editedTest);
+      console.log(eData.id);
+      console.log(eData);
+      /* axios.put(`${this.state.BACKEND_URL}/tests/${test.id}`, data)
+      .then(response => this.testId = response.data.id)
+      .catch(error => {
+        this.errorMessage = error.message;
+        console.error("There was an error!", error);
+      }); */
+    },
     ADD_NEW_ELEMENT_TO_NEW_TEST({ commit }, element) {
       commit("ADD_NEW_ELEMENT", element);
     },

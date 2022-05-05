@@ -7,25 +7,25 @@
   ],
   "tests": [
     {
-      "name": "Точка зрения",
-      "description": "Расскажите нам вашу точку зрения о происходящем в мире",
+      "name": "Новый тест",
+      "description": "Новое описание",
       "creator": "<ThisUserName>",
       "responsible": {
-        "login": "lina_maltceva@gmail.com"
+        "login": "resp@test.com"
       },
-      "test_status": "CLOSED",
+      "test_status": "IN_PROCESS",
       "redactors": [
         {
-          "login": "bskozlov@gmail.com"
+          "login": "red1@test.com"
         },
         {
-          "login": "bskozlov1@gmail.com"
+          "login": "red2@test.com"
         },
         {
-          "login": "bskozlov2@gmail.com"
+          "login": "red3@test.com"
         }
       ],
-      "creation_date": "2022-05-01",
+      "creation_date": "2022-05-05",
       "passing": [
         "ardagna@me.com",
         "spadkins@msn.com",
@@ -35,90 +35,17 @@
       ],
       "categories": [
         {
-          "name": "Политика",
+          "name": "cat 2",
           "categories": [
             {
-              "name": "Внешняя политика",
+              "name": "sub cat 1",
               "questions": [
                 {
-                  "question": "Для чего, по вашему, спецоперация на украине?",
+                  "question": "que 1",
                   "answers": [
                     {
-                      "text": "Стабилизации экономики",
+                      "text": "new ans 1",
                       "weight": "1"
-                    },
-                    {
-                      "text": "Не дать НАТО подобраться близко к границам",
-                      "weight": "2"
-                    },
-                    {
-                      "text": "Денационализация",
-                      "weight": "4"
-                    },
-                    {
-                      "text": "Другое",
-                      "weight": "3"
-                    }
-                  ]
-                },
-                {
-                  "question": "Когда, вы считаете, это закончиться?",
-                  "answers": [
-                    {
-                      "text": "До конца года",
-                      "weight": "3"
-                    },
-                    {
-                      "text": "До конца следующего года",
-                      "weight": "2"
-                    },
-                    {
-                      "text": "В течении месяца",
-                      "weight": "4"
-                    }
-                  ]
-                }
-              ],
-              "elements_type": "que"
-            },
-            {
-              "name": "Внутренняя политика",
-              "questions": [
-                {
-                  "question": "Чем вы готовы пожертвовать ради поднятия пенсий?",
-                  "answers": [
-                    {
-                      "text": "Зарплаты льготников",
-                      "weight": "2"
-                    },
-                    {
-                      "text": "Ввели бы высокие налоги",
-                      "weight": "3"
-                    },
-                    {
-                      "text": "Ввязались бы в войну для получения финансовой помощи от крупных альянсов",
-                      "weight": "6"
-                    },
-                    {
-                      "text": "Финансирование армии",
-                      "weight": "10"
-                    }
-                  ]
-                },
-                {
-                  "question": "Какая по вашему должна быть пенсия?",
-                  "answers": [
-                    {
-                      "text": "10-20 тыс. рублей",
-                      "weight": "1"
-                    },
-                    {
-                      "text": "20-30 тыс. рублей",
-                      "weight": "2"
-                    },
-                    {
-                      "text": "40-50 тыс. рублей",
-                      "weight": "4"
                     }
                   ]
                 }
