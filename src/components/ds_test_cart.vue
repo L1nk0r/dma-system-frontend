@@ -37,6 +37,10 @@
    </div>
 
    <el-dialog v-model="modalVisible" title="Edit test">
+      <div class="test_edit_container">
+
+
+      
          <el-steps :active="this.active" finish-status="success">
             <el-step title="In process" @click="setStatus('IN_PROCESS')" class="step" />
             <el-step title="Approved" @click="setStatus('APPROVED')" class="step" />
@@ -63,7 +67,10 @@
          </div>
          <button
             class="submitBtn"
-            @click="saveEditedTest()"> Save </button>
+            @click="saveEditedTest()">
+            Save </button>
+         
+      </div>
   </el-dialog>
 
 </template>
@@ -130,6 +137,8 @@ export default{
             });
       },
       getData(){
+         let today = new Date().toISOString().slice(0, 10);
+
          const data = {
             name: this.cart_data.name,
             description: this.cart_data.description,
@@ -139,7 +148,9 @@ export default{
             redactors: this.cart_data.redactors,
             creation_date: this.cart_data.creation_date,
             passing: this.cart_data.passing,
-            categories: this.cart_data.categories
+            categories: this.cart_data.categories,
+            last_modified_date: today,
+            last_modified_person: "<ThisUserLogin>"
          };
 
          return data;
@@ -236,4 +247,12 @@ export default{
    .zebra li {padding: 10px;}
    .zebra li:nth-child(odd) {background: #E1F1FF;}
    .zebra li:nth-child(even) {background: white;}
+
+   .test_edit_container{
+      margin-left: 20px;
+   }
+
+   .test_edit_container > *{
+      margin: 30px 0;
+   }
 </style>
