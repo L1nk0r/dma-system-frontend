@@ -27,15 +27,11 @@
 </template>
 
 <script>
-/* import dsSubCategory from "./ds_subcategory.vue";
-import dsQuestion from "./ds_question.vue"; */
 import dsEditSubcategory from "./ds_edit_subcategory.vue"
 import dsEditQuestion from "./ds_edit_question.vue"
 export default {
   name: "editCategory",
   components: {
-    /* dsSubCategory,
-    dsQuestion, */
     dsEditSubcategory,
     dsEditQuestion
   },
@@ -51,11 +47,9 @@ export default {
     },
   },
   methods: {
-    changeCategoryName() {
-      this.category.set_name(this.name);
-    },
+    changeCategoryName() { },
     chooseCategory() {
-      console.log(this.category.name);
+      /* console.log(this.category.name); */
     },
   },
   computed: {},

@@ -1,7 +1,12 @@
 
 export default class Redactor{
-   constructor(){
-      this.login = '';
+   constructor(apiResponseRedactor){
+      if (apiResponseRedactor === undefined){
+         this.login = '';
+      } else {
+         this.login = apiResponseRedactor.login;
+      }
+      
    }
 
    set_login(login){

@@ -1,10 +1,23 @@
-
+import Question from "./question";
 export default class SubCategory{
-   constructor(n){
-      this.name = 'New SubCategory' + n;
-      this.questions = [];
+   constructor(options){
+      if (options === undefined){
+         this.name = 'New SubCategory';
+         this.questions = [];
 
-      this.elements_type = '';
+         this.elements_type = '';
+      } else {
+         var apiResponseOneSubCategory = options;
+         this.name = apiResponseOneSubCategory.name;
+         this.questions = [];
+         this.elements_type = apiResponseOneSubCategory.elements_type;
+
+         apiResponseOneSubCategory.questions.forEach(element => {
+            let que = new Question(element);
+            this.questions.push(que);
+         });
+      }  
+      
    }
 
    add_question(question){

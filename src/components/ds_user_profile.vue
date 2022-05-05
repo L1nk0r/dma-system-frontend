@@ -264,7 +264,7 @@ export default {
     ]),
     add_category() {
       if (this.current_category === null) {
-        let new_cat = new Category(this.amount);
+        let new_cat = new Category(undefined);
         this.amount++;
 
         this.ADD_NEW_ELEMENT_TO_NEW_TEST(new_cat);
@@ -277,7 +277,7 @@ export default {
           console.log("Cant add new sub category");
         } else {
           this.current_category.set_elements_type("cat");
-          let new_sub_cat = new SubCategory(this.amount);
+          let new_sub_cat = new SubCategory();
           this.amount++;
 
           this.current_category.add_sub_category(new_sub_cat);

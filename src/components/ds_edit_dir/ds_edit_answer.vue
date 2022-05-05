@@ -34,14 +34,8 @@ export default {
     },
   },
   methods: {
-    set_answer_name() {
-      console.log(this.name);
-      this.answer.set_answer(this.name);
-    },
-    set_answer_weight() {
-      console.log(this.weight);
-      this.answer.set_weight(this.weight);
-    },
+    set_answer_name() { },
+    set_answer_weight() { }
   },
   mounted(){
      this.weight = this.answer.weight;
@@ -55,7 +49,7 @@ export default {
   width: 90%;
   padding: 20px;
   margin: 15px;
-  /* border: 1px solid green; */
+  
   border-radius: 15px;
 }
 

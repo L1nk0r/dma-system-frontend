@@ -34,9 +34,7 @@ export default {
     },
   },
   methods: {
-    changeCategoryName() {
-      this.subCategory.set_name(this.name);
-    },
+    changeCategoryName() { },
   },
   mounted() {
      this.name = this.subCategory.name;

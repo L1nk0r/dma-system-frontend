@@ -9,6 +9,7 @@ import { AuthApi } from "./auth/AuthApi";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import Test from "./elements/test";
 
 const store = createStore({
   state: {
@@ -47,7 +48,10 @@ const store = createStore({
       localStorage.removeItem("userRole");
     },
     SET_TESTS_TO_STATE: (state, tests) => {
-      state.tests = tests;
+      tests.forEach(element => {
+        let test = new Test(element);
+        state.tests.push(test);
+      });
     },
     ADD_NEW_ELEMENT: (state, element) => {
       state.new_test.categories.push(element);

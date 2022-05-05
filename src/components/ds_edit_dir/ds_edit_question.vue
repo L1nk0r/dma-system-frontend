@@ -34,9 +34,7 @@ export default {
     },
   },
   methods: {
-    changeQuestionName() {
-      this.question.set_question(this.name);
-    },
+    changeQuestionName() { },
   },
   mounted() {
      this.name = this.question.question;

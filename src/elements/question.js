@@ -1,8 +1,19 @@
+import Answer from "./answer";
 
 export default class Question{
-   constructor(){
-      this.question = 'new_question';
-      this.answers = [];
+   constructor(apiResponseQuestion){
+      if (apiResponseQuestion === undefined){
+         this.question = 'new_question';
+         this.answers = [];
+      } else {
+         this.question = apiResponseQuestion.question;
+         this.answers = [];
+
+         apiResponseQuestion.answers.forEach(element => {
+            let ans = new Answer(element);
+            this.answers.push(ans);
+         });
+      }
    }
 
    set_question(question){

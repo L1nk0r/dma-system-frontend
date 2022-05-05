@@ -1,8 +1,14 @@
 
 export default class Answer{
-   constructor(){
-      this.text = 'new_answer';
-      this.weight = 0;
+   constructor(options){
+      if (options === undefined){
+         this.text = 'new_answer';
+         this.weight = 0;
+      } else {
+         var apiResponse = options;
+         this.text = apiResponse.text;
+         this.weight = apiResponse.text;
+      }
    }
 
    set_answer(answer){
