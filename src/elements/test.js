@@ -28,4 +28,8 @@ export default class Test{
          this.categories.push(cat);
       });
    }
+
+   setStatus(status){
+      this.test_status = status;
+   }
 }

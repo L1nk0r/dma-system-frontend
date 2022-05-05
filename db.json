@@ -13,7 +13,7 @@
       "responsible": {
         "login": "resp@test.com"
       },
-      "test_status": "IN_PROCESS",
+      "test_status": "CLOSED",
       "redactors": [
         {
           "login": "red1@test.com"
@@ -35,7 +35,7 @@
       ],
       "categories": [
         {
-          "name": "cat 2",
+          "name": "cat 3",
           "categories": [
             {
               "name": "sub cat 1",

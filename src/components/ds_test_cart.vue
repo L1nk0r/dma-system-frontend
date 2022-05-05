@@ -38,10 +38,10 @@
 
    <el-dialog v-model="modalVisible" title="Edit test">
          <el-steps :active="this.active" finish-status="success">
-            <el-step title="In process" />
-            <el-step title="Approved" />
-            <el-step title="Published" />
-            <el-step title="Closed" />
+            <el-step title="In process" @click="setStatus('IN_PROCESS')" class="step" />
+            <el-step title="Approved" @click="setStatus('APPROVED')" class="step" />
+            <el-step title="Published" @click="setStatus('PUBLISHED')" class="step" />
+            <el-step title="Closed" @click="setStatus('CLOSED')" class="step" />
          </el-steps>
          <h1>{{ cart_data.name }}</h1>
          <p class="desc_p">{{ cart_data.description }} </p>
@@ -120,26 +120,32 @@ export default{
          }
       },
       saveEditedTest(){
-         console.log(this.cart_data.id);
+         const data = this.getData();
 
+         axios.put(`${this.getServerUrl}/tests/${this.cart_data.id}`, data)
+            .then(response => this.testId = response.data.id)
+            .catch(error => {
+            this.errorMessage = error.message;
+               console.error("There was an error!", error);
+            });
+      },
+      getData(){
          const data = {
             name: this.cart_data.name,
             description: this.cart_data.description,
             creator: this.cart_data.creator,
             responsible: this.cart_data.responsible,
-            test_status: "IN_PROCESS",
+            test_status: this.cart_data.test_status,
             redactors: this.cart_data.redactors,
             creation_date: this.cart_data.creation_date,
             passing: this.cart_data.passing,
             categories: this.cart_data.categories
          };
 
-         axios.put(`${this.getServerUrl}/tests/${this.cart_data.id}`, data)
-            .then(response => this.testId = response.data.id)
-            .catch(error => {
-            this.errorMessage = error.message;
-            console.error("There was an error!", error);
-            });
+         return data;
+      },
+      setStatus(str){
+         this.cart_data.setStatus(str);
       }
    },
    created(){
@@ -207,6 +213,10 @@ export default{
       padding: 0px;
       margin-right: 7px;
       margin-top: 2px;
+   }
+
+   .step:hover{
+      cursor: pointer;
    }
 
    .desc_p{
