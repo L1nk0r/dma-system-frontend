@@ -1,21 +1,75 @@
 <template>
    <div class="test_content_wrapper">
       <div class="test_content">
-         <h1>Test name</h1>
-         <p>Interesting facts. Maybe some teories, words, links, цитаты великих людей, еще что-то, я пока это все не придумала</p>
+
+         <p v-if="CUR_TEST === null">No such test</p>
+         <div v-else>
+
+         
+
+            <h1> {{ CUR_TEST.name }} </h1>
+            <p> {{ CUR_TEST.description }} </p>
+            <div 
+               v-for="(cat, index) in CUR_TEST.categories"
+               :key="index">
+
+               <div
+                  v-for="(s_cat, index) in cat.categories"
+                  :key="index">
+                     <p>{{ cat.name }}/{{ s_cat.name}} </p>
+                     <div v-for="(que, index) in s_cat.questions"
+                           :key="index">
+                           <p>{{ que.question }}</p>
+                           <div v-for="(ans, index) in que.answers"
+                              :key="index">
+                              <p>{{ ans.text }} : {{ ans.weight }}</p>
+                              
+                        </div>
+                     </div>
+               </div>
+            </div>
+
+         
+         </div>
+
       </div>
    </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+import { useRoute } from "vue-router";
 export default{
    name: 'dsTest',
    data(){
-      return {}
+      return {
+         questionIndex: 0
+      }
    },
    components:{},
    props:{},
-   methods:{}
+   computed:{
+      ...mapGetters(["CUR_TEST"]),
+   },
+   methods:{
+      ...mapActions(["GET_ONE_TEST_FROM_API"]),
+      next(){
+         this.questionIndex++;
+      },
+      prev(){
+         this.questionIndex--;
+      }
+   },
+   created(){
+      let testId = useRoute().params.id;
+      /* this.$route.params.id */
+      this.GET_ONE_TEST_FROM_API(testId)
+      .then((response) => {
+         if (response.data) {
+            console.log("Test arrived!");
+         }
+    });
+   }
 }
 </script>
 

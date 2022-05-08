@@ -172,7 +172,7 @@ export default{
       margin: 15px;
       height: 200px;
 
-      border: 1px solid black;
+      border: 1px solid rgba(0, 0, 0, 0.249);
       border-radius: 10px;
 
       display: grid;
@@ -183,15 +183,17 @@ export default{
       background-color: white;
       box-shadow: 5px;
 
-      -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-      -moz-box-shadow: 0px 15px 10px 2px rgba(34, 60, 80, 0.2);
-      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+      
 
       transition: 0.4s;
    }
 
    .cart:hover{
       transform: translateY(-5px);
+      border: 1px solid rgba(0, 0, 0, 0.7);
+      -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 0px 15px 10px 2px rgba(34, 60, 80, 0.2);
+      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
    }
 
    .cart div{

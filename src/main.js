@@ -29,6 +29,7 @@ const store = createStore({
       redactors: [],
       passing: []
     },
+    cur_test: null
   },
   mutations: {
     setToken(state, token) {
@@ -49,9 +50,13 @@ const store = createStore({
     },
     SET_TESTS_TO_STATE: (state, tests) => {
       tests.forEach(element => {
+        /* console.log(element); */
         let test = new Test(element);
         state.tests.push(test);
       });
+    },
+    SET_TEST_TO_STATE: (state, test) => {
+      state.cur_test = test;
     },
     ADD_NEW_ELEMENT: (state, element) => {
       state.new_test.categories.push(element);
@@ -76,7 +81,7 @@ const store = createStore({
     },
     SET_TEST_CREACTION_DATE: (state, date) => {
       state.new_test.creation_date = date;
-    }
+    },
   },
   actions: {
     onLogin({ commit }, { login, password }) {
@@ -102,18 +107,18 @@ const store = createStore({
           return error;
         });
     },
-    GET_TEST_FROM_API_BY_ID({commit}, id){
+    GET_ONE_TEST_FROM_API({ commit }, id){
       return axios(`${this.getters.getServerUrl}/tests/${id}`, {
         method: "GET",
-      }) 
+      })
         .then((response) => {
-          commit("", response.data);
-          return response
+          commit("SET_TEST_TO_STATE", response.data);
+          return response;
         })
         .catch((error) => {
           console.log(error);
           return error;
-        })
+        });
     },
     SET_NEW_TEST(){
       const data = {
@@ -186,6 +191,9 @@ const store = createStore({
     NEW_TEST(state) {
       return state.new_test;
     },
+    CUR_TEST(state){
+      return state.cur_test;
+    }
   },
 });
 

@@ -35,7 +35,7 @@
       ],
       "categories": [
         {
-          "name": "cat 5",
+          "name": "cat",
           "categories": [
             {
               "name": "sub cat 1",
@@ -57,6 +57,8 @@
           "elements_type": "cat"
         }
       ],
+      "last_modified_date": "2022-05-06",
+      "last_modified_person": "<ThisUserLogin>",
       "id": 1
     }
   ]

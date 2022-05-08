@@ -27,7 +27,7 @@ const routes = [
       component: dsUserProfile,
    },
    {
-      path: "/test",
+      path: "/test/:id",
       name: "Test",
       component: dsTest,
    }
