@@ -9,6 +9,20 @@
 
             <h1> {{ CUR_TEST.name }} </h1>
             <p style="margin-left:50px;"> {{ CUR_TEST.description }} </p>
+
+            <div class="raw">
+               <h4>Ваша почта:</h4>
+               <input
+                type="text"
+                class="input_field"
+                placeholder="Please input your email here"
+                v-model="this.user_name"
+                @change="changePassingName()"
+              />
+            </div>
+
+            
+
             <div 
                v-for="(cat, index) in CUR_TEST.categories"
                :key="index"
@@ -38,7 +52,10 @@
                </ds-result-answer>
             </div>
 
-         
+            <button
+            class="submitBtn"
+            @click="publishResults()">
+            Завершить </button>
          </div>
 
       </div>
@@ -56,7 +73,8 @@ export default{
       return {
          questionIndex: 0,
          value: '',
-         results: []
+         results: [],
+         user_name: ''
       }
    },
    components:{
@@ -67,7 +85,7 @@ export default{
       ...mapGetters(["CUR_TEST", "RESULT_ARRAY"]),
    },
    methods:{
-      ...mapActions(["GET_ONE_TEST_FROM_API", "ADD_ANSWER_TO_ARRAY"]),
+      ...mapActions(["GET_ONE_TEST_FROM_API", "ADD_ANSWER_TO_ARRAY", "SET_RESULT_NAME", "SET_PASS_TEST"]),
       next(){
          this.questionIndex++;
       },
@@ -76,6 +94,12 @@ export default{
       },
       addNewAnswer(data){
          this.ADD_ANSWER_TO_ARRAY(data);
+      },
+      changePassingName(){
+         this.SET_RESULT_NAME(this.user_name);
+      },
+      publishResults(){
+         this.SET_PASS_TEST();
       }
    },
    created(){

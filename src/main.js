@@ -31,7 +31,8 @@ const store = createStore({
       passing: []
     },
     cur_test: null,
-    result_answers_array: []
+    result_answers_array: [],
+    result_name: null
   },
   mutations: {
     setToken(state, token) {
@@ -89,13 +90,15 @@ const store = createStore({
       let result = state.result_answers_array.findIndex(obj => {
         return obj.question_id === ans_obj.question_id
       });
-      console.log(result);
       if (result === -1){
         state.result_answers_array.push(ans_obj);
       } else {
         state.result_answers_array.splice(result, 1);
         state.result_answers_array.push(ans_obj);
       }
+    },
+    UPDATE_RESULT_NAME: (state, name) => {
+      state.result_name = name;
     }
   },
   actions: {
@@ -148,10 +151,25 @@ const store = createStore({
         categories: this.state.new_test.categories
       };
 
-      console.log(JSON.stringify(data));
+      /* console.log(JSON.stringify(data)); */
 
       axios.post(`${this.state.BACKEND_URL}/tests/`, data)
         .then(response => this.testId = response.data.id)
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
+    },
+    SET_PASS_TEST(){
+      const data = {
+        mail: this.state.result_name,
+        results: this.state.result_answers_array
+      }
+
+      /* console.log(JSON.stringify(data)); */
+
+      axios.post(`${this.state.BACKEND_URL}/tests_results/`, data)
+        .then()
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
@@ -196,6 +214,9 @@ const store = createStore({
     },
     ADD_ANSWER_TO_ARRAY({commit}, ans_obj){
       commit("ADD_NEW_ANSWER_TO_ARRAY", ans_obj);
+    },
+    SET_RESULT_NAME({ commit }, name) {
+      commit("UPDATE_RESULT_NAME", name);
     }
   },
   getters: {

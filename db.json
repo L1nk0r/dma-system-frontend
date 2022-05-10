@@ -5,6 +5,36 @@
       "pasword": "1234567"
     }
   ],
+  "tests_results": [
+    {
+      "mail": "new",
+      "results": [
+        {
+          "answer_id": 46,
+          "question_id": 16
+        },
+        {
+          "answer_id": 47,
+          "question_id": 17
+        }
+      ],
+      "id": 1
+    },
+    {
+      "mail": "new1",
+      "results": [
+        {
+          "answer_id": 35,
+          "question_id": 16
+        },
+        {
+          "answer_id": 47,
+          "question_id": 17
+        }
+      ],
+      "id": 2
+    }
+  ],
   "tests": [
     {
       "name": "new",
