@@ -12,18 +12,29 @@ export default class Category{
          this.name = apiResponseCategories.name;
          this.categories = [];
          this.questions = [];
+         this.id = apiResponseCategories.id;
 
-         apiResponseCategories.categories.forEach(element => {
-            let subCat = new SubCategory(element);
-            this.categories.push(subCat);
-         });
-
-         apiResponseCategories.questions.forEach(element => {
-            let que = new Question(element);
-            this.questions.push(que);
-         });
-
-         this.elements_type = apiResponseCategories.elements_type;
+         if (apiResponseCategories.categories != undefined){
+            if (apiResponseCategories.categories.length > 0){
+               apiResponseCategories.categories.forEach(element => {
+                  let subCat = new SubCategory(element);
+                  this.categories.push(subCat);
+                  this.elements_type = "cat";
+               });
+            } else {
+               apiResponseCategories.questions.forEach(element => {
+                  let que = new Question(element);
+                  this.questions.push(que);
+                  this.elements_type = "que";
+               });
+            }
+         } else {
+            apiResponseCategories.questions.forEach(element => {
+               let que = new Question(element);
+               this.questions.push(que);
+               this.elements_type = "que";
+            });
+         }
       }
       
    }

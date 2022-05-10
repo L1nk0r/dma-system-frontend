@@ -6,6 +6,7 @@ export default class Answer{
          this.weight = 0;
       } else {
          var apiResponse = options;
+         this.answer_id = apiResponse.answer_id;
          this.text = apiResponse.text;
          this.weight = apiResponse.weight;
       }

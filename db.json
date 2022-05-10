@@ -7,25 +7,23 @@
   ],
   "tests": [
     {
-      "name": "Новый тест",
-      "description": "Новое описание",
-      "creator": "<ThisUserName>",
+      "name": "new",
+      "description": "desc",
+      "creator": {
+        "login": "Admin",
+        "password": "21232f297a57a5a743894a0e4a801fc3"
+      },
       "responsible": {
-        "login": "resp@test.com"
+        "login": "Admin",
+        "password": "21232f297a57a5a743894a0e4a801fc3"
       },
       "test_status": "CLOSED",
       "redactors": [
         {
-          "login": "red1@test.com"
-        },
-        {
-          "login": "red2@test.com"
-        },
-        {
-          "login": "red3@test.com"
+          "login": "Kosta"
         }
       ],
-      "creation_date": "2022-05-05",
+      "creation_date": "2022-05-01",
       "passing": [
         "ardagna@me.com",
         "spadkins@msn.com",
@@ -35,29 +33,59 @@
       ],
       "categories": [
         {
-          "name": "cat",
+          "name": "cat1",
           "categories": [
             {
-              "name": "sub cat 1",
+              "id": 6,
+              "name": "scat",
               "questions": [
                 {
-                  "question": "que 1",
+                  "question": "que",
+                  "question_id": 16,
                   "answers": [
                     {
-                      "text": "new ans 1",
-                      "weight": "1"
+                      "answer_id": 46,
+                      "text": "ans1",
+                      "weight": 3
+                    },
+                    {
+                      "answer_id": 6,
+                      "text": "ans2",
+                      "weight": 2
+                    },
+                    {
+                      "answer_id": 35,
+                      "text": "ans3",
+                      "weight": 1
                     }
                   ]
                 }
-              ],
-              "elements_type": "que"
+              ]
             }
           ],
           "questions": [],
-          "elements_type": "cat"
+          "id": 5
+        },
+        {
+          "name": "cat 2",
+          "categories": [],
+          "questions": [
+            {
+              "question": "que 2",
+              "question_id": 17,
+              "answers": [
+                {
+                  "answer_id": 47,
+                  "text": "ans (так правильно)",
+                  "weight": 3
+                }
+              ]
+            }
+          ],
+          "id": 7
         }
       ],
-      "last_modified_date": "2022-05-06",
+      "last_modified_date": "2022-05-10",
       "last_modified_person": "<ThisUserLogin>",
       "id": 1
     }

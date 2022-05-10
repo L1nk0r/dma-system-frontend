@@ -8,6 +8,7 @@ export default class SubCategory{
          this.elements_type = '';
       } else {
          var apiResponseOneSubCategory = options;
+         this.id = apiResponseOneSubCategory.id;
          this.name = apiResponseOneSubCategory.name;
          this.questions = [];
          this.elements_type = apiResponseOneSubCategory.elements_type;

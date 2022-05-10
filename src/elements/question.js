@@ -7,6 +7,7 @@ export default class Question{
          this.answers = [];
       } else {
          this.question = apiResponseQuestion.question;
+         this.question_id = apiResponseQuestion.question_id;
          this.answers = [];
 
          apiResponseQuestion.answers.forEach(element => {

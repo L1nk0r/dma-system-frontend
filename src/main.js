@@ -9,6 +9,7 @@ import { AuthApi } from "./auth/AuthApi";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+
 import Test from "./elements/test";
 
 const store = createStore({
@@ -29,7 +30,8 @@ const store = createStore({
       redactors: [],
       passing: []
     },
-    cur_test: null
+    cur_test: null,
+    result_answers_array: []
   },
   mutations: {
     setToken(state, token) {
@@ -56,7 +58,8 @@ const store = createStore({
       });
     },
     SET_TEST_TO_STATE: (state, test) => {
-      state.cur_test = test;
+      let ctest = new Test(test);
+      state.cur_test = ctest;
     },
     ADD_NEW_ELEMENT: (state, element) => {
       state.new_test.categories.push(element);
@@ -82,6 +85,18 @@ const store = createStore({
     SET_TEST_CREACTION_DATE: (state, date) => {
       state.new_test.creation_date = date;
     },
+    ADD_NEW_ANSWER_TO_ARRAY:(state, ans_obj) => {
+      let result = state.result_answers_array.findIndex(obj => {
+        return obj.question_id === ans_obj.question_id
+      });
+      console.log(result);
+      if (result === -1){
+        state.result_answers_array.push(ans_obj);
+      } else {
+        state.result_answers_array.splice(result, 1);
+        state.result_answers_array.push(ans_obj);
+      }
+    }
   },
   actions: {
     onLogin({ commit }, { login, password }) {
@@ -178,6 +193,9 @@ const store = createStore({
     },
     SET_NEW_TEST_CREACTION_DATE({commit}, date){
       commit("SET_TEST_CREACTION_DATE", date);
+    },
+    ADD_ANSWER_TO_ARRAY({commit}, ans_obj){
+      commit("ADD_NEW_ANSWER_TO_ARRAY", ans_obj);
     }
   },
   getters: {
@@ -193,6 +211,9 @@ const store = createStore({
     },
     CUR_TEST(state){
       return state.cur_test;
+    },
+    RESULT_ARRAY(state){
+      return state.result_answers_array;
     }
   },
 });
