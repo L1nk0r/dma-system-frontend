@@ -1,4 +1,4 @@
-import { defineComponent, h, PropType } from 'vue'
+import { defineComponent, h } from 'vue'
 
 import { Radar } from 'vue-chartjs'
 import {
@@ -49,26 +49,13 @@ export default defineComponent({
     data: {
        type: Array,
        default: () => {}
+    },
+    chartData:{
+       type: Object,
+       default: () => {}
     }
   },
   setup(props) {
-    const chartData = {
-      labels: props.labels,
-      datasets: [
-        
-        {
-          label: '',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
-          pointBackgroundColor: 'rgba(255,99,132,1)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(255,99,132,1)',
-          data: props.data
-        }
-      ]
-    }
-
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
@@ -76,7 +63,7 @@ export default defineComponent({
 
     return () =>
       h(Radar, {
-        chartData,
+        chartData: props.chartData,
         chartOptions,
         chartId: props.chartId,
         width: props.width,

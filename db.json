@@ -296,6 +296,8 @@
     {"parent":"Cat1", "category" : "Subcat2", "stats":5, "id":1},
     {"parent":"Cat2", "category" : "Subcat3", "stats":8, "id":1},
     {"parent":"Cat2", "category" : "Subcat4", "stats":8, "id":1},
-    {"parent":"Cat", "category" : "Subcat5", "stats":6, "id":2}
+    {"parent":"Cat1", "category" : "Subcat5", "stats":6, "id":2},
+    {"parent":"Cat2", "category" : "Subcat6", "stats":5, "id":2},
+    {"parent":"Cat2", "category" : "Subcat7", "stats":4, "id":2}
   ]
 }

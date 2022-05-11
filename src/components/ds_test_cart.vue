@@ -74,14 +74,17 @@
          
          <button
             class="submitBtn"
-            @click="getAnalyze()"
+            @click="analyzeVisible = true"
             v-if="this.cart_data.test_status === 'CLOSED'">
             Analyze </button>
          
-         <RadarChart
-         :labels='this.cart_data.analyze.lables'
-         :data='this.cart_data.analyze.stats'
-         />
+         <el-dialog v-model="analyzeVisible" title="Test analyze">
+            <RadarChart
+            :chartData='this.getDataSet()'
+            />
+         </el-dialog>
+         
+         
          
          
       </div>
@@ -105,7 +108,8 @@ export default{
          modalVisible: false,
          form: '',
          active: 2,
-         isEditeble: true
+         isEditeble: true,
+         analyzeVisible: false
       }
    },
    props:{
@@ -185,6 +189,25 @@ export default{
       },
       getAnalyze(){
          console.log(this.cart_data.analyze);
+      },
+      getDataSet(){
+         const chartData = {
+            labels: this.cart_data.analyze.lables,
+            datasets: [
+            {
+               label: 'Test analyze',
+               backgroundColor: 'rgba(255,99,132,0.2)',
+               borderColor: 'rgba(255,99,132,1)',
+               pointBackgroundColor: 'rgba(255,99,132,1)',
+               pointBorderColor: '#fff',
+               pointHoverBackgroundColor: '#fff',
+               pointHoverBorderColor: 'rgba(255,99,132,1)',
+               data: this.cart_data.analyze.stats
+            }
+            ]
+         };
+
+         return chartData;
       }
    },
    created(){
