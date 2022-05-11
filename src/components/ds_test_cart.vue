@@ -68,7 +68,8 @@
          </div>
          <button
             class="submitBtn"
-            @click="saveEditedTest()">
+            @click="saveEditedTest()"
+            v-if="this.isEditeble === true">
             Save </button>
          
          
