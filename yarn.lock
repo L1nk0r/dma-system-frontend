@@ -5846,10 +5846,10 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vue-chartjs@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-4.0.5.tgz#ebb73abdc481cbb57f65b27f0ae114b118f3c01b"
-  integrity sha512-02DuKqHrmfy8TXIaKJocnsGA1yS5AHhiPQ2XXhvZc78n4nBiR+yFL1edYvMDbvdPtku7qptd4y0Ew2iDyyyLZQ==
+vue-chartjs@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-4.1.0.tgz#314474d33eb3bb9d0bafe7f075bb03e21e865602"
+  integrity sha512-lHOs5vjb9dDdXz/0TbQWjJuL1/KOLT1tlvo+6b1M+JyyIQjeAf8K9IVsUhx8fdSIR4QD9CBELN/cYgYwKdiJ7g==
 
 vue-demi@*:
   version "0.12.5"

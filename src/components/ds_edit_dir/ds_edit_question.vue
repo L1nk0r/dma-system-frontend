@@ -1,15 +1,31 @@
 <template>
   <div class="edit_question">
     <input
+      type="text"
       v-model="this.name"
       placeholder="Вопрос"
       class="editor_input_field"
       @change="changeQuestionName()"
+      v-if="this.isEditeble === true"
+    />
+
+    <input
+      type="text"
+      v-model="this.name"
+      placeholder="Вопрос"
+      class="editor_input_field"
+      @change="changeQuestionName()"
+      v-else
+      disabled
     />
 
     <!--               Answers                -->
 
-    <ds-edit-answer v-for="ans in question.answers" :key="ans.id" :answer="ans" />
+    <ds-edit-answer 
+      v-for="ans in question.answers" 
+      :key="ans.id" 
+      :answer="ans"
+      :isEditeble="this.isEditeble" />
   </div>
 </template>
 
@@ -30,6 +46,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    isEditeble:{
+      type: Boolean,
+      default: () => {}
+    }
   },
   methods: {
     changeQuestionName() {
@@ -46,8 +66,8 @@ export default {
 <style>
 .edit_question {
   width: 90%;
-  padding: 20px;
-  margin: 15px;
+  padding: 5px;
+  margin: 10px;
   /* border: 1px solid red; */
   border-radius: 15px;
 }

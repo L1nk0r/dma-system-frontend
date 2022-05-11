@@ -1,16 +1,29 @@
 <template>
   <div class="edit_subcategoty_container">
     <input
+      type="text"
       v-model="this.name"
       placeholder="Имя подкатегории"
       class="editor_input_field"
       @change="changeCategoryName()"
+      v-if="this.isEditeble === true"
+    />
+
+    <input
+      type="text"
+      v-model="this.name"
+      placeholder="Имя подкатегории"
+      class="editor_input_field"
+      @change="changeCategoryName()"
+      v-else
+      disabled
     />
 
     <ds-edit-question
       v-for="ques in subCategory.questions"
       :key="ques.id"
       :question="ques"
+      :isEditeble="this.isEditeble"
     />
   </div>
 </template>
@@ -32,6 +45,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    isEditeble:{
+      type: Boolean,
+      default: () => {}
+    }
   },
   methods: {
     changeCategoryName() {
@@ -47,8 +64,8 @@ export default {
 <style>
 .edit_subcategoty_container {
   width: 90%;
-  padding: 20px;
-  margin: 15px;
+  padding: 5px;
+  margin: 10px;
   /* border: 1px solid yellow; */
   border-radius: 15px;
 }

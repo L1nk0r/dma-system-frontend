@@ -6,6 +6,17 @@
       placeholder="Имя категории"
       class="editor_input_field"
       @change="changeCategoryName()"
+      v-if="this.isEditeble === true"
+    />
+
+    <input
+      type="text"
+      v-model="this.name"
+      placeholder="Имя категории"
+      class="editor_input_field"
+      @change="changeCategoryName()"
+      v-else
+      disabled
     />
 
     <div class="categories_container" v-if="category.elements_type === 'cat'">
@@ -13,6 +24,7 @@
         v-for="sub_cat in category.categories"
         :key="sub_cat.id"
         :subCategory="sub_cat"
+        :isEditeble="this.isEditeble"
       />
     </div>
 
@@ -21,6 +33,7 @@
         v-for="que in category.questions"
         :key="que.id"
         :question="que"
+        :isEditeble="this.isEditeble"
       />
     </div>
   </div>
@@ -45,6 +58,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    isEditeble:{
+      type: Boolean,
+      default: () => {}
+    }
   },
   methods: {
     changeCategoryName() {
@@ -64,8 +81,8 @@ export default {
 <style>
 .edit_categoty_container {
   width: 90%;
-  padding: 20px;
-  margin: 15px;
+  padding: 5px;
+  margin: 10px;
   /* border: 1px solid blue; */
   border-radius: 15px;
 }

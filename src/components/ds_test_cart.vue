@@ -58,17 +58,19 @@
             v-for="item in cart_data.redactors"
             :key="item"> {{ item.login }} </li>
          </ul>
-         <div class="questions_container">
+         <div class="questions_container" v-if="cart_data.test_status != 'CLOSED'">
             <ds-edit-category
                 v-for="elem in cart_data.categories"
                 :key="elem.id"
                 :category="elem"
+                :isEditeble="this.isEditeble"
             />
          </div>
          <button
             class="submitBtn"
             @click="saveEditedTest()">
             Save </button>
+         
          
       </div>
   </el-dialog>
@@ -77,18 +79,21 @@
 
 <script>
 import dsEditCategory from "./ds_edit_dir/ds_edit_category.vue"
+/* import RadarChart from "./chart_elements/ds_radar_chart.ts" */
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
 export default{
    name: 'testCart',
    components: {
-      dsEditCategory
+      dsEditCategory,
+      /* RadarChart */
    },
    data(){
       return {
          modalVisible: false,
          form: '',
-         active: 2
+         active: 2,
+         isEditeble: true
       }
    },
    props:{
@@ -113,15 +118,19 @@ export default{
       getStatus(){
          let s = this.cart_data.test_status;
          if (s === 'IN_PROCESS'){
+            this.isEditeble = true;
             this.active = 0;
             return 'In process'
          } else if (s === 'CLOSED'){
+            this.isEditeble = false;
             this.active = 3;
             return 'Closed'
          } else if (s === 'APPROVED'){
+            this.isEditeble = true;
             this.active = 1;
             return 'Approved'
          } else {
+            this.isEditeble = false;
             this.active = 2;
             return 'Published'
          }
@@ -256,5 +265,9 @@ export default{
 
    .test_edit_container > *{
       margin: 30px 0;
+   }
+
+   input[type="text"]:disabled {
+      background: #fff;
    }
 </style>

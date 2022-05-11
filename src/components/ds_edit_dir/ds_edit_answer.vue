@@ -1,5 +1,5 @@
 <template>
-  <div class="edit_answer">
+  <div class="edit_answer" v-if="this.isEditeble === true">
     <input
       type="text"
       class="input_weight"
@@ -14,6 +14,26 @@
       v-model="this.name"
       @change="set_answer_name()"
       placeholder="Ответ"
+    />
+  </div>
+
+  <div class="edit_answer" v-else>
+    <input
+      type="text"
+      class="input_weight"
+      v-model="this.weight"
+      @change="set_answer_weight()"
+      placeholder="Вес ответа"
+      disabled
+    />
+    :
+    <input
+      type="text"
+      class="editor_input_field"
+      v-model="this.name"
+      @change="set_answer_name()"
+      placeholder="Ответ"
+      disabled
     />
   </div>
 </template>
@@ -32,6 +52,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    isEditeble:{
+      type: Boolean,
+      default: () => {}
+    }
   },
   methods: {
     set_answer_name() {
@@ -51,8 +75,8 @@ export default {
 <style>
 .edit_answer {
   width: 90%;
-  padding: 20px;
-  margin: 15px;
+  padding: 5px;
+  margin: 10px;
   
   border-radius: 15px;
 }
