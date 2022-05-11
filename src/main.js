@@ -11,6 +11,7 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
 import Test from "./elements/test";
+import TestAnalyze from "./elements/analyze";
 
 const store = createStore({
   state: {
@@ -61,6 +62,13 @@ const store = createStore({
     SET_TEST_TO_STATE: (state, test) => {
       let ctest = new Test(test);
       state.cur_test = ctest;
+    },
+    GET_TEST_ANALYZE: (state, response) => {
+      let analyze = new TestAnalyze(response);
+      let result = state.tests.find(obj => {
+        return obj.id === analyze.id
+      });
+      if (result != undefined) result.setAnalyze(analyze);
     },
     ADD_NEW_ELEMENT: (state, element) => {
       state.new_test.categories.push(element);
@@ -131,6 +139,21 @@ const store = createStore({
       })
         .then((response) => {
           commit("SET_TEST_TO_STATE", response.data);
+          return response;
+        })
+        .catch((error) => {
+          console.log(error);
+          return error;
+        });
+    },
+    GET_TEST_ANALYZE_DATA_FROM_API({commit}, id){
+      return axios(`${this.getters.getServerUrl}/analyze?id=${id}`, {
+        method: "GET",
+      })
+        .then((response) => {
+          commit("GET_TEST_ANALYZE", response.data);
+          /* console.log(response);
+          console.log(response.data); */
           return response;
         })
         .catch((error) => {
@@ -235,6 +258,9 @@ const store = createStore({
     },
     RESULT_ARRAY(state){
       return state.result_answers_array;
+    },
+    ANALYZE(state){
+      return state.analyze;
     }
   },
 });

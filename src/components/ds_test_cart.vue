@@ -72,6 +72,17 @@
             v-if="this.isEditeble === true">
             Save </button>
          
+         <button
+            class="submitBtn"
+            @click="getAnalyze()"
+            v-if="this.cart_data.test_status === 'CLOSED'">
+            Analyze </button>
+         
+         <RadarChart
+         :labels='this.cart_data.analyze.lables'
+         :data='this.cart_data.analyze.stats'
+         />
+         
          
       </div>
   </el-dialog>
@@ -80,14 +91,14 @@
 
 <script>
 import dsEditCategory from "./ds_edit_dir/ds_edit_category.vue"
-/* import RadarChart from "./chart_elements/ds_radar_chart.ts" */
+import RadarChart from "./chart_elements/ds_radar_chart.ts"
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
 export default{
    name: 'testCart',
    components: {
       dsEditCategory,
-      /* RadarChart */
+      RadarChart
    },
    data(){
       return {
@@ -104,17 +115,18 @@ export default{
       }
    },
    computed: {
-      ...mapGetters(["getServerUrl"]),
+      ...mapGetters(["getServerUrl", "ANALYZE"]),
    },
    methods:{
       ...mapActions([
-         "SAVE_TEST_TO_SERVER"
+         "SAVE_TEST_TO_SERVER",
+         "GET_TEST_ANALYZE_DATA_FROM_API"
       ]),
       getQuestionsAmount(){
          return this.cart_data.questins.length;
       },
       getPeopleAmount(){
-         return this.cart_data.already_finished + '/' + this.cart_data.people_amount;
+         return this.cart_data.already_finished + '/' + this.getAllUsersAmount();
       },
       getStatus(){
          let s = this.cart_data.test_status;
@@ -167,10 +179,19 @@ export default{
       },
       setStatus(str){
          this.cart_data.setStatus(str);
+      },
+      getAllUsersAmount(){
+         return this.cart_data.passing.length;
+      },
+      getAnalyze(){
+         console.log(this.cart_data.analyze);
       }
    },
    created(){
 
+   },
+   mounted(){
+      this.GET_TEST_ANALYZE_DATA_FROM_API(this.cart_data.id);
    }
 }
 </script>

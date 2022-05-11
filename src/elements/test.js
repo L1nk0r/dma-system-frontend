@@ -11,6 +11,7 @@ export default class Test{
       this.redactors = [];
       this.passing = [];
       this.categories = [];
+      this.analyze = null;
 
       this.test_status = apiResponse.test_status;
       apiResponse.redactors.forEach(element => {
@@ -31,5 +32,9 @@ export default class Test{
 
    setStatus(status){
       this.test_status = status;
+   }
+
+   setAnalyze(analyze){
+      this.analyze = analyze;
    }
 }

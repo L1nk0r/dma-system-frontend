@@ -291,15 +291,11 @@
     }
   ],
   "analyze": [
-    {"parent":"Cat", "category" : "Subcat", "stats":8},
-    {"parent":"Cat", "category" : "Subcat1", "stats":1},
-    {"parent":"Cat", "category" : "Subcat2", "stats":7},
-    {"parent":"Cat", "category" : "Subcat3", "stats":2},
-    {"parent":"Cat", "category" : "Subcat4", "stats":6},
-    {"parent":"Cat", "category" : "Subcat5", "stats":3},
-    {"parent":"Cat", "category" : "Subcat6", "stats":5},
-    {"parent":"Cat", "category" : "Subcat7", "stats":4},
-    {"parent":"Cat", "category" : "Subcat8", "stats":4},
-    {"parent":"Cat", "category" : "Subcat9", "stats":9}
+    {"parent":"Cat1", "category" : "Subcat", "stats":8, "id":1},
+    {"parent":"Cat1", "category" : "Subcat1", "stats":8, "id":1},
+    {"parent":"Cat1", "category" : "Subcat2", "stats":5, "id":1},
+    {"parent":"Cat2", "category" : "Subcat3", "stats":8, "id":1},
+    {"parent":"Cat2", "category" : "Subcat4", "stats":8, "id":1},
+    {"parent":"Cat", "category" : "Subcat5", "stats":6, "id":2}
   ]
 }
