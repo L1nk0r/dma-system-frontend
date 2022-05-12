@@ -23,7 +23,6 @@
           <h1>Создать новый тест</h1>
           <div class="contaner">
             <div class="raw">
-
               <!-- New test name -->
               <h3>Название теста</h3>
               <input
@@ -63,18 +62,17 @@
             <!-- New test redactors -->
             <div class="raw">
               <h3>Редакторы</h3>
-               <p
-                  @click="add_redactor()"
-                  class="p">+</p>
-               <div 
+              <p @click="add_redactor()" class="p">+</p>
+              <div
                 class="redactors_container"
-                v-if="this.test_redactors_amount > 0">
-                  <ds-new-redactor 
+                v-if="this.test_redactors_amount > 0"
+              >
+                <ds-new-redactor
                   v-for="red in NEW_TEST.redactors"
                   :key="red"
                   :redactor="red"
-               />
-               </div>
+                />
+              </div>
             </div>
 
             <!-- New test recipients input-file field -->
@@ -88,17 +86,18 @@
                 content="Пожалуйста, используйте только файлы формата .txt"
               >
                 <template #reference>
-                  <h3> Получатели </h3>
+                  <h3>Получатели</h3>
                 </template>
               </el-popover>
-              <input 
+              <input
                 type="file"
                 accept=".txt"
                 placeholder="Add file"
                 id="recInput"
                 ref="recFiles"
                 @change="handleFiles()"
-                multiple/>
+                multiple
+              />
             </div>
 
             <!-- New test main elements -->
@@ -146,8 +145,7 @@
               />
             </div>
 
-          <button @click="submitForm()" class="submitBtn"> Submit </button>
-
+            <button @click="submitForm()" class="submitBtn">Submit</button>
           </div>
         </el-dialog>
       </div>
@@ -179,21 +177,21 @@
 <script>
 import dsTestCart from "./ds_test_cart.vue";
 import dsNewCategory from "./ds_new_category.vue";
-import dsNewRedactor from "./ds_new_redactor.vue"
+import dsNewRedactor from "./ds_new_redactor.vue";
 import { mapActions, mapGetters } from "vuex";
 
 import Category from "../elements/category";
 import SubCategory from "../elements/subcategory";
 import Question from "../elements/question";
 import Answer from "../elements/answer";
-import Redactor from "../elements/redactor"
+import Redactor from "../elements/redactor";
 
 export default {
   name: "Profile_tests",
   components: {
     dsTestCart,
     dsNewCategory,
-    dsNewRedactor
+    dsNewRedactor,
   },
   data() {
     return {
@@ -234,8 +232,8 @@ export default {
       current_question: null,
       test_redactors_amount: 0,
       test_commentators_amount: 0,
-      file_res: '',
-      testId: null
+      file_res: "",
+      testId: null,
     };
   },
   created() {},
@@ -260,7 +258,7 @@ export default {
       "ADD_NEW_TEST_NEW_RECIPIENT",
       "REMOVE_ALL_NEW_TEST_RECIPIENTS",
       "SET_NEW_TEST_CREACTION_DATE",
-      "SET_NEW_TEST"
+      "SET_NEW_TEST",
     ]),
     add_category() {
       if (this.current_category === null) {
@@ -330,43 +328,43 @@ export default {
         return 1;
       }
     },
-    add_redactor(){
-       this.test_redactors_amount ++;
-       let new_red = new Redactor();
-       this.ADD_NEW_TEST_REDACTOR(new_red);
+    add_redactor() {
+      this.test_redactors_amount++;
+      let new_red = new Redactor();
+      this.ADD_NEW_TEST_REDACTOR(new_red);
     },
-    print_str(str){
+    print_str(str) {
       this.ADD_NEW_TEST_NEW_RECIPIENT(str);
     },
-    handleFiles(){
+    handleFiles() {
       this.REMOVE_ALL_NEW_TEST_RECIPIENTS();
-      if (this.$refs.recFiles === undefined){
-        console.log('no file')
+      if (this.$refs.recFiles === undefined) {
+        console.log("no file");
       } else {
         let upload = this.$refs.recFiles;
 
         let reader = new FileReader();
-        reader.onload = function(){
+        reader.onload = function () {
           let res = reader.result;
-          let string_arr = res.split('\n');
-          for (let i = 0; i<string_arr.length; i++){
+          let string_arr = res.split("\n");
+          for (let i = 0; i < string_arr.length; i++) {
             this.print_str(string_arr[i]);
           }
         }.bind(this);
 
-        reader.onerror = function(){
+        reader.onerror = function () {
           console.log(reader.error);
-        }
+        };
 
         reader.readAsText(upload.files[0]);
-      } 
+      }
     },
-    submitForm(){
+    submitForm() {
       let today = new Date().toISOString().slice(0, 10);
       this.SET_NEW_TEST_CREACTION_DATE(today);
 
       this.SET_NEW_TEST();
-    }
+    },
   },
 };
 </script>
@@ -405,13 +403,13 @@ export default {
   width: 200px;
 }
 
-.p{
+.p {
   padding: 5px 5px;
   margin: 10px;
 }
 
-.p:hover{
-   cursor: pointer;
+.p:hover {
+  cursor: pointer;
 }
 
 .input_field {
@@ -451,7 +449,6 @@ export default {
   height: 40px;
   font-size: 18px;
 
-  /* border: 1px solid rgb(120, 120, 249); */
   border: none;
   color: rgba(0, 0, 0, 0.4);
 
@@ -502,8 +499,6 @@ nav .user_status {
 }
 
 .tests .addTest {
-  /* float: left; */
-
   height: 50px;
   width: 50px;
 
@@ -556,13 +551,12 @@ nav .user_status {
   align-content: center;
 }
 
-.redactors_container{
-  /* border: 1px solid black; */
+.redactors_container {
   border-radius: 15px;
   width: 50%;
 }
 
-.submitBtn{
+.submitBtn {
   width: 200px;
   height: 50px;
 
@@ -570,21 +564,21 @@ nav .user_status {
 
   background: none;
 
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #BF9F80;
+  color: #bf9f80;
 
-  border: 1px solid #BF9F80;
+  border: 1px solid #bf9f80;
   box-sizing: border-box;
   border-radius: 15px;
 
   transition: 0.6s;
 }
 
-.submitBtn:hover{
-  background-color: #BF9F80;
+.submitBtn:hover {
+  background-color: #bf9f80;
   color: #fff;
 }
 
