@@ -321,13 +321,6 @@ export default {
       resp.set_login(this.test_responsible_user);
       this.SET_NEW_TEST_RESPONSIBLE_USER(resp);
     },
-    checkType() {
-      if (this.current_category.elements_type === "que") {
-        return 0;
-      } else {
-        return 1;
-      }
-    },
     add_redactor() {
       this.test_redactors_amount++;
       let new_red = new Redactor();
@@ -374,7 +367,6 @@ export default {
 
 .wrapper {
   display: flex;
-  align-items: center;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
   width: 100%;
@@ -382,7 +374,7 @@ export default {
   background-image: url("../assets/background.png");
 
   flex-direction: column;
-  margin: 0px auto;
+  margin: 0 auto;
 
   align-items: flex-start;
 }
@@ -488,7 +480,7 @@ nav .header {
 }
 
 nav .header h3 {
-  font-family: Snyder Speed Brush Cyr;
+  font-family: Snyder Speed Brush Cyr, sans-serif;
   font-size: 48px;
   color: rgba(191, 159, 128, 0.9);
 }
@@ -506,7 +498,7 @@ nav .user_status {
 
   background: white;
 
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -564,7 +556,7 @@ nav .user_status {
 
   background: none;
 
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
