@@ -5,21 +5,20 @@ import App from "./App.vue";
 
 import axios from "axios";
 
-import { AuthApi } from "./auth/AuthApi";
-
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
 import Test from "./elements/test";
 import TestAnalyze from "./elements/analyze";
 
+import { auth } from "./auth.modules"
+
 const store = createStore({
+  modules:{
+    auth
+  },
   state: {
     BACKEND_URL: "http://localhost:3000",
-    credentials: {
-      token: localStorage.getItem("token") || null,
-      userRole: localStorage.getItem("userRole") || null,
-    },
     tests: [],
     new_test: {
       name: "No name",
@@ -36,22 +35,6 @@ const store = createStore({
     result_name: null,
   },
   mutations: {
-    setToken(state, token) {
-      state.credentials.token = token;
-      localStorage.setItem("token", token);
-    },
-    setUserRole(state, userRole) {
-      state.credentials.userRole = userRole;
-      localStorage.setItem("userRole", userRole);
-    },
-    deleteToken(state) {
-      state.credentials.token = null;
-      localStorage.removeItem("token");
-    },
-    deleteUserRole(state) {
-      state.credentials.userRole = null;
-      localStorage.removeItem("userRole");
-    },
     SET_TESTS_TO_STATE: (state, tests) => {
       tests.forEach((element) => {
         let test = new Test(element);
@@ -109,16 +92,6 @@ const store = createStore({
     },
   },
   actions: {
-    onLogin({ commit }, { login, password }) {
-      AuthApi.login({ login, password }).then((res) => {
-        commit("setToken", res.token);
-        commit("setUserRole", res.userRole);
-      });
-    },
-    onLogout({ commit }) {
-      commit("deleteToken");
-      commit("deleteUserRole");
-    },
     GET_TESTS_FROM_API({ commit }) {
       return axios(`${this.getters.getServerUrl}/tests`, {
         method: "GET",
@@ -228,7 +201,6 @@ const store = createStore({
     getServerUrl: (state) => {
       return state.BACKEND_URL;
     },
-    getUserRole: (state) => state.credentials.userRole,
     TESTS(state) {
       return state.tests;
     },
