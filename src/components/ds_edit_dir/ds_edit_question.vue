@@ -62,13 +62,3 @@ export default {
   computed: {},
 };
 </script>
-
-<style>
-.edit_question {
-  width: 90%;
-  padding: 5px;
-  margin: 10px;
-  /* border: 1px solid red; */
-  border-radius: 15px;
-}
-</style>

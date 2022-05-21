@@ -8,15 +8,17 @@ import axios from "axios";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
+import "./assets/styles.css"
+
 import Test from "./elements/test";
 import TestAnalyze from "./elements/analyze";
 
-import { auth } from "./auth.modules"
+/* import { auth } from "./auth.modules" */
 
 const store = createStore({
-  modules:{
+  /* modules:{
     auth
-  },
+  }, */
   state: {
     BACKEND_URL: "http://localhost:3000",
     tests: [],

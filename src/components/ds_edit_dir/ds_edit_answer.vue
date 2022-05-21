@@ -71,27 +71,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.edit_answer {
-  width: 90%;
-  padding: 5px;
-  margin: 10px;
-  
-  border-radius: 15px;
-}
-
-.input_weight {
-  border: 1px solid black;
-  width: 15px;
-}
-
-.input_weight:focus {
-  outline: none;
-}
-
-.input_weight:not(:placeholder-shown) {
-  border: none;
-  color: rgba(63, 63, 63, 0.7);
-}
-</style>

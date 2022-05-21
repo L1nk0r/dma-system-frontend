@@ -77,13 +77,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.edit_categoty_container {
-  width: 90%;
-  padding: 5px;
-  margin: 10px;
-  /* border: 1px solid blue; */
-  border-radius: 15px;
-}
-</style>
