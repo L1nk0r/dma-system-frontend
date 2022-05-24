@@ -141,7 +141,6 @@ footer {
   color: rgba(191, 159, 128, 0.6);
 }
 
-
 /*    -------     User profile styles     -------    */
 .wrapper {
   display: flex;
@@ -454,9 +453,36 @@ form button:hover {
   width: 90%;
   padding: 20px;
   margin: 15px;
-  border-left: 1px solid blue;
-  border-bottom: 1px solid blue;
+  /* border-left: 1px solid blue;
+  border-bottom: 1px solid blue; */
+  border: 1px solid blue;
   border-radius: 15px;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+  transition: 0.3s;
+}
+
+@keyframes slideIn {
+  from {
+    margin-top: 100%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
+
+.new_categoty_container:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.new_categoty_container:hover .input_field {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.new_categoty_container:has(.new_subcategoty_container:hover) {
+  background-color: white;
 }
 
 .cart {
@@ -565,6 +591,7 @@ input[type="text"]:disabled {
   margin: 15px;
   border: 1px solid green;
   border-radius: 15px;
+  background-color: white;
 }
 
 .input_weight {
@@ -594,6 +621,7 @@ input[type="text"]:disabled {
   margin: 15px;
   border: 1px solid red;
   border-radius: 15px;
+  background-color: white;
 }
 
 .new_subcategoty_container {
@@ -602,6 +630,7 @@ input[type="text"]:disabled {
   margin: 15px;
   border: 1px solid yellow;
   border-radius: 15px;
+  background-color: white;
 }
 
 /*   -------     Test styles     -------    */

@@ -1,16 +1,12 @@
 <template>
-  <!-- <ds-index/> -->
   <router-view/>
 </template>
 
 <script>
-/* import dsIndex from "./components/ds_index.vue" */
 
 export default {
   name: 'App',
-  components: {
-    /* dsIndex */
-  }
+  components: { }
 }
 </script>
 

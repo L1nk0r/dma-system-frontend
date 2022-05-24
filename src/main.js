@@ -13,14 +13,11 @@ import "./assets/styles.css"
 import Test from "./elements/test";
 import TestAnalyze from "./elements/analyze";
 
-/* import { auth } from "./auth.modules" */
+import authHeader from '../services/auth-header';
 
 const store = createStore({
-  /* modules:{
-    auth
-  }, */
   state: {
-    BACKEND_URL: "http://localhost:3000",
+    BACKEND_URL: "http://localhost:8000",
     tests: [],
     new_test: {
       name: "No name",
@@ -97,6 +94,7 @@ const store = createStore({
     GET_TESTS_FROM_API({ commit }) {
       return axios(`${this.getters.getServerUrl}/tests`, {
         method: "GET",
+        headers: authHeader()
       })
         .then((response) => {
           commit("SET_TESTS_TO_STATE", response.data);
@@ -123,6 +121,7 @@ const store = createStore({
     GET_TEST_ANALYZE_DATA_FROM_API({ commit }, id) {
       return axios(`${this.getters.getServerUrl}/analyze?id=${id}`, {
         method: "GET",
+        headers: authHeader()
       })
         .then((response) => {
           commit("GET_TEST_ANALYZE", response.data);
@@ -147,7 +146,10 @@ const store = createStore({
       };
 
       axios
-        .post(`${this.state.BACKEND_URL}/tests/`, data)
+        .post(`${this.state.BACKEND_URL}/tests/`, {
+          headers: authHeader(),
+          data: data
+        })
         .then((response) => (this.testId = response.data.id))
         .catch((error) => {
           this.errorMessage = error.message;

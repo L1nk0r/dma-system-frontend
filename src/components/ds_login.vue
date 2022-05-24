@@ -15,48 +15,47 @@
         прямо сейчас!
       </p>
 
-      <button @click="submit()">Войти</button>
+      <button @click="handleLogin()" type="button">Войти</button>
     </form>
   </div>
 </template>
 
 <script>
-/* import User from "../models/user"; */
+import axios from "axios";
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
-    /* return {
-      user: new User("", ""),
-    }; */
+    return {
+      login: '',
+      password: '',
+      response: ''
+    };
   },
   methods: {
-    submit() {
-      this.$router.push("/tests");
-    },
-    /* handleLogin() {
-      this.loading = true;
-      this.$store.dispatch("auth/login", this.user).then(
-        () => {
-          this.$router.push("/profile");
-        },
-        (error) => {
-          this.loading = false;
-          this.message =
-            (error.response && error.response.data) ||
-            error.message || error.toString();
-        }
-      );
-    }, */
+    handleLogin(){
+      const data = {
+        login: this.login,
+        password: this.password
+      };
+
+      axios
+        .post(`${this.getServerUrl}/login`, data)
+        .then(response => {
+          if (response.data.token) {
+            localStorage.setItem('user', JSON.stringify(response.data));
+          }
+          return response.data;
+        })
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
+    }
   },
   computed: {
-    /* loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
-    }, */
+    ...mapGetters(["getServerUrl"]),
   },
-  created() {
-    /* if (this.loggedIn) {
-      this.$router.push("/tests");
-    } */
-  },
+  created() { },
 };
 </script>
