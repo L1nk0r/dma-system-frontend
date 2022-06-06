@@ -236,7 +236,7 @@ export default {
       testId: null,
     };
   },
-  created() {},
+  created() { },
   mounted() {
     this.GET_TESTS_FROM_API().then((response) => {
       if (response.data) {

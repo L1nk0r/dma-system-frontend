@@ -4,10 +4,10 @@
       <h1>Log in</h1>
 
       <h3>Логин</h3>
-      <input placeholder="login..." />
+      <input placeholder="login..." v-model="login"/>
 
       <h3>Пароль</h3>
-      <input placeholder="password..." type="password" />
+      <input placeholder="password..." type="password" v-model="password"/>
 
       <p>
         Если всё ещё нет аккаунта,
@@ -16,6 +16,8 @@
       </p>
 
       <button @click="handleLogin()" type="button">Войти</button>
+
+      <!-- <p class="token">{{ this.response }}</p> -->
     </form>
   </div>
 </template>
@@ -38,7 +40,6 @@ export default {
         login: this.login,
         password: this.password
       };
-
       axios
         .post(`${this.getServerUrl}/login`, data)
         .then(response => {
@@ -56,6 +57,27 @@ export default {
   computed: {
     ...mapGetters(["getServerUrl"]),
   },
-  created() { },
+  created() {
+    /* localStorage.removeItem('user'); */
+  },
 };
 </script>
+
+<style scoped>
+  .token{
+    background: rgba(0, 255, 0, 0.1);
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 15%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5px;
+  }
+</style>

@@ -13,7 +13,7 @@ import "./assets/styles.css"
 import Test from "./elements/test";
 import TestAnalyze from "./elements/analyze";
 
-import authHeader from '../services/auth-header';
+import authHeader from './services/auth-header';
 
 const store = createStore({
   state: {
@@ -146,7 +146,7 @@ const store = createStore({
       };
 
       axios
-        .post(`${this.state.BACKEND_URL}/tests/`, {
+        .post(`${this.state.BACKEND_URL}/test/create`, {
           headers: authHeader(),
           data: data
         })
