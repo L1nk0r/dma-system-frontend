@@ -7,7 +7,7 @@ This is frontend part of DMA System. This application helps managers evalute emp
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [How to run?](#how-to-run)
-  - [Screenshots](#screenshot)
+  - [Screenshots](#screenshots)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
