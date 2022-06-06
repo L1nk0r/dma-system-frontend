@@ -47,7 +47,29 @@ yarn run serve
 
 ### Screenshots
 
-will added later
+#### Landing
+
+![](./src/assets/screenshots/ds_landing.png)
+
+#### Login page
+
+![](./src/assets/screenshots/ds_login.png)
+
+#### Registration page
+
+![](./src/assets/screenshots/ds_reg.png)
+
+#### Profile
+
+![](./src/assets/screenshots/ds_profile.png)
+
+#### Create new test
+
+![](./src/assets/screenshots/ds_crearte.png)
+
+#### Edit test
+
+![](./src/assets/screenshots/ds_edit.png)
 
 ## My process
 
@@ -63,7 +85,7 @@ will added later
 - Axios
 - vue-router
 
-### What I lerned
+### What I learned
 
 To post authorized requests:
 
