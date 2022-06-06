@@ -95,6 +95,7 @@ import dsEditCategory from "./ds_edit_dir/ds_edit_category.vue";
 import RadarChart from "./chart_elements/ds_radar_chart.ts";
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
+import authHeader from "../services/auth-header"
 export default {
   name: "testCart",
   components: {
@@ -149,9 +150,11 @@ export default {
     },
     saveEditedTest() {
       const data = this.getData();
-
+      const config = {
+        headers: authHeader()
+      };
       axios
-        .put(`${this.getServerUrl}/tests/${this.cart_data.id}`, data)
+        .put(`${this.getServerUrl}/test`, data, config)
         .then((response) => (this.testId = response.data.id))
         .catch((error) => {
           this.errorMessage = error.message;
@@ -205,7 +208,7 @@ export default {
   },
   created() {},
   mounted() {
-    this.GET_TEST_ANALYZE_DATA_FROM_API(this.cart_data.id);
+    /* this.GET_TEST_ANALYZE_DATA_FROM_API(this.cart_data.id); */
   },
 };
 </script>
