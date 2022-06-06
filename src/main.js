@@ -21,10 +21,16 @@ const store = createStore({
     tests: [],
     new_test: {
       name: "No name",
-      creator: "<ThisUserName>",
+      creator: {
+        login: 'test'
+      },
       description: "No description",
-      responsible: null,
-      creation_date: null,
+      responsible: {
+        login: 'test'
+      },
+      creation_date: {
+        login: 'test'
+      },
       categories: [],
       redactors: [],
       passing: [],
@@ -143,13 +149,18 @@ const store = createStore({
         creation_date: this.state.new_test.creation_date,
         passing: this.state.new_test.passing,
         categories: this.state.new_test.categories,
+        last_modified_date: '05.07.2003',
+        last_modified_person: {
+          login: "test"
+        }
       };
 
+      const config = {
+        headers: authHeader()
+      }
+
       axios
-        .post(`${this.state.BACKEND_URL}/test/create`, {
-          headers: authHeader(),
-          data: data
-        })
+        .post(`${this.state.BACKEND_URL}/test/create`, data, config)
         .then((response) => (this.testId = response.data.id))
         .catch((error) => {
           this.errorMessage = error.message;
